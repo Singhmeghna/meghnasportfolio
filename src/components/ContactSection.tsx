@@ -1,44 +1,50 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Phone } from "lucide-react";
+import { Mail, Linkedin, Github, Phone, ArrowUpRight } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section className="py-32 px-6 bg-card" id="contact">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="py-32 px-6 relative overflow-hidden" id="contact">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background pointer-events-none" />
+
+      <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3">Get in Touch</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Let's <span className="text-gradient">Connect</span>
+          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Get in Touch</p>
+          <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
+            Let's build
+            <br />
+            <span className="text-gradient italic">something great</span>
           </h2>
-          <p className="text-muted-foreground text-lg mb-12 max-w-md mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg mb-14 max-w-md mx-auto leading-relaxed">
             Open to opportunities in QA Engineering, Test Automation, and Software Quality.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
             href="mailto:smeghna20@outlook.com"
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+            className="group flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Mail size={16} />
             Send Email
+            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
           <a
             href="https://linkedin.com/in/meghna-singh20"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground text-sm hover:border-primary/40 transition-colors"
+            className="group flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border text-foreground text-sm font-medium hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Linkedin size={16} />
             LinkedIn
@@ -47,7 +53,7 @@ const ContactSection = () => {
             href="https://github.com/Singhmeghna"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground text-sm hover:border-primary/40 transition-colors"
+            className="group flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border text-foreground text-sm font-medium hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Github size={16} />
             GitHub
@@ -58,10 +64,10 @@ const ContactSection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.4 }}
           className="mt-8 flex items-center justify-center gap-2 text-muted-foreground text-sm"
         >
-          <Phone size={14} />
+          <Phone size={13} />
           226–961–2734
         </motion.p>
       </div>
