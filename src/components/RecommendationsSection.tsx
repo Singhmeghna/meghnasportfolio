@@ -66,7 +66,7 @@ const RecommendationsSection = () => {
               LinkedIn Recommendations
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4">
             What <span className="italic" style={{ color: '#0077B5' }}>leaders</span> say
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -90,7 +90,7 @@ const RecommendationsSection = () => {
                 {/* Top LinkedIn-blue gradient bar */}
                 <div className="h-1.5 bg-gradient-to-r from-[#0077B5] via-[#00A0DC] to-[#0077B5]/30" />
 
-                <div className="p-8 md:p-10">
+                <div className="p-5 sm:p-8 md:p-10">
                   {/* LinkedIn icon + quote */}
                   <div className="flex items-start justify-between mb-6">
                     <div className="relative">

@@ -32,7 +32,7 @@ const AwardSection = () => {
                 </div>
                 <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Recognition</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-2">
                 Habit Flagbearer – <span className="text-gradient">Building Trust Award</span>
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-3">

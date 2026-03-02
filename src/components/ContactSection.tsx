@@ -16,7 +16,7 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Get in Touch</p>
-          <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
             Let's build
             <br />
             <span className="text-gradient italic">something great</span>

@@ -60,7 +60,7 @@ const SkillsSection = () => {
             <Zap size={14} className="text-accent" />
             <span className="text-accent text-xs tracking-[0.2em] uppercase font-semibold">Expertise</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4">
             Technical <span className="text-gradient italic">arsenal</span>
           </h2>
           <div className="section-divider" />
