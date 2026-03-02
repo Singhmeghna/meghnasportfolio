@@ -22,17 +22,31 @@ const HeroSection = () => {
       {/* Floating geometric decorations */}
       <motion.div className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center" animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }}>
         <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="relative w-full h-full">
-            <span className="absolute top-[12%] left-1/2 -translate-x-1/2 text-2xl opacity-40">🐛</span>
-            <span className="absolute top-[25%] right-[12%] text-2xl opacity-40">🧪</span>
-            <span className="absolute top-1/2 right-[8%] -translate-y-1/2 text-2xl opacity-40">⚙️</span>
-            <span className="absolute bottom-[25%] right-[12%] text-2xl opacity-40">📋</span>
-            <span className="absolute bottom-[12%] left-1/2 -translate-x-1/2 text-2xl opacity-40">✅</span>
-            <span className="absolute bottom-[25%] left-[12%] text-2xl opacity-40">🛡️</span>
-            <span className="absolute top-1/2 left-[8%] -translate-y-1/2 text-2xl opacity-40">⚡</span>
-            <span className="absolute top-[25%] left-[12%] text-2xl opacity-40">🔍</span>
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl opacity-40">🤖</span>
-          </div>
+          {/* 8 emojis evenly spaced around the circle (45° apart), radius ~42% from center */}
+          {[
+            { emoji: "🐛", angle: 0 },
+            { emoji: "🧪", angle: 45 },
+            { emoji: "⚙️", angle: 90 },
+            { emoji: "📋", angle: 135 },
+            { emoji: "✅", angle: 180 },
+            { emoji: "🛡️", angle: 225 },
+            { emoji: "⚡", angle: 270 },
+            { emoji: "🔍", angle: 315 },
+          ].map(({ emoji, angle }) => {
+            const rad = (angle * Math.PI) / 180;
+            const x = 50 + 38 * Math.cos(rad);
+            const y = 50 + 38 * Math.sin(rad);
+            return (
+              <span
+                key={angle}
+                className="absolute text-xl opacity-40 -translate-x-1/2 -translate-y-1/2"
+                style={{ left: `${x}%`, top: `${y}%` }}
+              >
+                {emoji}
+              </span>
+            );
+          })}
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl opacity-40">🤖</span>
         </div>
       </motion.div>
       <motion.div
