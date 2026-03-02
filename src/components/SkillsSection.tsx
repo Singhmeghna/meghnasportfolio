@@ -36,7 +36,7 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden bg-[#F0FDF9]" id="skills">
+    <section className="py-32 px-6 relative overflow-hidden" id="skills">
       {/* Emerald-tinted background */}
       <div className="absolute top-10 -right-20 w-80 h-80 opacity-[0.06] rounded-full overflow-hidden pointer-events-none">
         <img src={skillsBg} alt="" className="w-full h-full object-cover" />
@@ -44,7 +44,7 @@ const SkillsSection = () => {
 
       {/* Dot grid pattern */}
       <div className="absolute inset-0 opacity-[0.025]" style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, hsl(160 60% 30%) 1px, transparent 0)`,
+        backgroundImage: `radial-gradient(circle at 1px 1px, hsl(215 25% 20%) 1px, transparent 0)`,
         backgroundSize: '40px 40px',
       }} />
 
@@ -56,7 +56,7 @@ const SkillsSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-3 font-medium">Expertise</p>
+          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Expertise</p>
           <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
             Technical <span className="text-gradient italic">arsenal</span>
           </h2>
