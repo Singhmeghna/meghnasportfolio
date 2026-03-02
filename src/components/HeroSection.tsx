@@ -26,10 +26,13 @@ const HeroSection = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
-        className="absolute bottom-28 left-[8%] w-40 h-40 rounded-full border border-accent/15"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-      />
+        className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
+        <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
+      </motion.div>
       <div className="absolute top-[35%] right-[10%] w-3 h-3 rounded-full bg-primary/40 glow-dot animate-float" />
       <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-accent/50 glow-dot animate-float-reverse" />
       <div className="absolute bottom-[30%] right-[25%] w-2 h-2 rounded-full bg-primary/30 animate-float" />
@@ -39,21 +42,9 @@ const HeroSection = () => {
         M
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
-        {/* Left — Photo */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-shrink-0"
-        >
-          <div className="w-56 h-56 md:w-72 md:h-72 rounded-full ring-4 ring-primary/15 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/15 animate-pulse-glow">
-            <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
-          </div>
-        </motion.div>
-
-        {/* Right — Content */}
-        <div className="flex-1 text-center md:text-left">
+      <div className="relative z-10 max-w-3xl mx-auto text-center">
+        {/* Content */}
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,7 +79,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-muted-foreground text-lg md:text-xl max-w-lg leading-relaxed mb-10 font-light mx-auto md:mx-0"
+              className="text-muted-foreground text-lg md:text-xl max-w-lg mx-auto leading-relaxed mb-10 font-light"
             >
               QA & Test Automation Engineer who turns{" "}
               <span className="text-foreground font-medium">chaos into confidence</span> —
@@ -101,7 +92,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex items-center justify-center md:justify-start gap-3 flex-wrap mb-6"
+            className="flex items-center justify-center gap-3 flex-wrap mb-6"
           >
             <a
               href="/Meghna_Singh_Resume.pdf"
@@ -125,7 +116,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="flex items-center justify-center md:justify-start gap-4 flex-wrap mb-10"
+            className="flex items-center justify-center gap-4 flex-wrap mb-10"
           >
             {[
               { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/meghna-singh20" },
@@ -153,7 +144,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="grid grid-cols-3 gap-4 max-w-md mx-auto md:mx-0"
+            className="grid grid-cols-3 gap-4 max-w-md mx-auto"
           >
             {[
               { value: "3+", label: "Years Experience", icon: Zap },
