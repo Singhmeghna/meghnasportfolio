@@ -9,6 +9,9 @@ interface Experience {
   tagline: string;
   highlights: { text: string; metric?: string }[];
   tags: string[];
+  accentColor: string;
+  accentBg: string;
+  accentBorder: string;
 }
 
 const experiences: Experience[] = [
@@ -18,6 +21,9 @@ const experiences: Experience[] = [
     period: "Jan 2026 – Present",
     location: "Toronto, ON",
     tagline: "Raising the bar on AI quality evaluation at scale",
+    accentColor: "text-[#6366F1]",
+    accentBg: "bg-[#6366F1]",
+    accentBorder: "border-[#6366F1]",
     highlights: [
       { text: "Elevated quality score from 3.5 → 4.2 by designing constraint-driven RL Studio prompts evaluating LLM outputs against 100+ page technical manuals.", metric: "↑ 20% quality" },
       { text: "Drove a 30% increase in approval rate by producing structured answer keys and validating model alignment.", metric: "30% ↑ approvals" },
@@ -31,6 +37,9 @@ const experiences: Experience[] = [
     period: "Sep 2024 – Apr 2025",
     location: "Ottawa, ON",
     tagline: "Automating firmware QA for photonics hardware at enterprise scale",
+    accentColor: "text-[#0EA5E9]",
+    accentBg: "bg-[#0EA5E9]",
+    accentBorder: "border-[#0EA5E9]",
     highlights: [
       { text: "Reduced firmware batch update time by 48% — built a Python-based QA automation system with pytest validation, REST API testing, retry/rollback logic for 30+ devices.", metric: "48% faster" },
       { text: "Cut device setup time by 46% by automating calibration file generation in C#/Python with Protobuf and database integration.", metric: "46% faster" },
@@ -45,6 +54,9 @@ const experiences: Experience[] = [
     period: "Jul 2021 – Jul 2023",
     location: "New Delhi, India",
     tagline: "Ensuring enterprise-grade reliability across SAP ecosystems",
+    accentColor: "text-[#10B981]",
+    accentBg: "bg-[#10B981]",
+    accentBorder: "border-[#10B981]",
     highlights: [
       { text: "Improved system reliability for 1,000+ users by designing and executing QA test plans for 12+ SAP and non-SAP integrations — functional, regression, and validation testing.", metric: "1000+ users" },
       { text: "Increased data accuracy across 50+ interfaces by leading manual and integration testing, performing defect triage, and resolving inconsistencies.", metric: "50+ interfaces" },
@@ -58,8 +70,16 @@ const experiences: Experience[] = [
 
 const ExperienceSection = () => {
   return (
-    <section className="py-32 px-6 relative" id="experience">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/[0.03] to-transparent pointer-events-none" />
+    <section className="py-32 px-6 relative bg-[#F8FAFC]" id="experience">
+      {/* Subtle slate-toned background */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(135deg, hsl(215 25% 20%) 25%, transparent 25%),
+          linear-gradient(225deg, hsl(215 25% 20%) 25%, transparent 25%),
+          linear-gradient(45deg, hsl(215 25% 20%) 25%, transparent 25%),
+          linear-gradient(315deg, hsl(215 25% 20%) 25%, transparent 25%)`,
+        backgroundSize: '20px 20px',
+        backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
+      }} />
 
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
@@ -87,10 +107,10 @@ const ExperienceSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
+              className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
             >
-              {/* Top accent bar */}
-              <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary/20" />
+              {/* Colored accent bar per company */}
+              <div className={`h-1 ${exp.accentBg}`} />
 
               <div className="p-8 md:p-10">
                 {/* Header */}
@@ -105,20 +125,20 @@ const ExperienceSection = () => {
                     <p className="text-foreground/80 text-sm font-medium">{exp.role}</p>
                   </div>
                   <div className="text-muted-foreground text-xs mt-3 md:mt-0 md:text-right flex flex-col gap-1.5">
-                    <span className="inline-flex px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground font-medium">{exp.period}</span>
+                    <span className={`inline-flex px-3 py-1.5 rounded-full ${exp.accentBg}/10 ${exp.accentColor} font-medium border ${exp.accentBorder}/20`}>{exp.period}</span>
                     <span>{exp.location}</span>
                   </div>
                 </div>
 
                 {/* Tagline */}
-                <p className="text-primary/80 italic text-sm mb-6 font-serif">{exp.tagline}</p>
+                <p className={`${exp.accentColor}/80 italic text-sm mb-6 font-serif`}>{exp.tagline}</p>
 
                 {/* Highlights with metrics */}
                 <div className="space-y-4 mb-6">
                   {exp.highlights.map((h, j) => (
                     <div key={j} className="flex items-start gap-4">
                       {h.metric && (
-                        <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-primary/8 text-primary text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-primary/10">
+                        <span className={`flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-md ${exp.accentBg}/10 ${exp.accentColor} text-[11px] font-semibold whitespace-nowrap mt-0.5 border ${exp.accentBorder}/15`}>
                           <TrendingUp size={10} />
                           {h.metric}
                         </span>

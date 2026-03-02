@@ -3,8 +3,12 @@ import { Mail, Linkedin, Github, Phone, ArrowUpRight, Download } from "lucide-re
 
 const ContactSection = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden" id="contact">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background pointer-events-none" />
+    <section className="py-32 px-6 relative overflow-hidden bg-[#EFF6FF]" id="contact">
+      {/* Navy-tinted radial background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.04] blur-3xl pointer-events-none" />
+      </div>
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.div
@@ -43,7 +47,7 @@ const ContactSection = () => {
             href="https://linkedin.com/in/meghna-singh20"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border text-foreground text-sm font-medium hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5"
+            className="group flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border bg-card text-foreground text-sm font-medium hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Linkedin size={16} />
             LinkedIn
@@ -51,7 +55,7 @@ const ContactSection = () => {
           <a
             href="/Meghna_Singh_Resume.pdf"
             download
-            className="group flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border text-foreground text-sm font-medium hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5"
+            className="group flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border bg-card text-foreground text-sm font-medium hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Download size={16} />
             Resume
