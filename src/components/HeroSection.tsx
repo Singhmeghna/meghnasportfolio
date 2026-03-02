@@ -39,121 +39,135 @@ const HeroSection = () => {
         M
       </div>
 
-      <div className="relative z-10 max-w-3xl text-center">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        {/* Left — Photo */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex-shrink-0"
         >
+          <div className="w-56 h-56 md:w-72 md:h-72 rounded-full ring-4 ring-primary/15 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/15 animate-pulse-glow">
+            <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
+          </div>
+        </motion.div>
 
-          {/* Status badge */}
+        {/* Right — Content */}
+        <div className="flex-1 text-center md:text-left">
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card mb-10 shadow-lg shadow-primary/5"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
           >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
-            </span>
-            <span className="text-foreground/80 font-sans text-xs tracking-wider uppercase font-medium">
-              Available for opportunities
+            {/* Status badge */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card mb-8 shadow-lg shadow-primary/5"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
+              </span>
+              <span className="text-foreground/80 font-sans text-xs tracking-wider uppercase font-medium">
+                Available for opportunities
+              </span>
+            </motion.div>
+
+            {/* Name */}
+            <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tight mb-2 leading-[0.9]">
+              Meghna
+            </h1>
+            <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tight mb-6 leading-[0.9]">
+              <span className="text-gradient">Singh</span>
+            </h1>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-muted-foreground text-lg md:text-xl max-w-lg leading-relaxed mb-10 font-light mx-auto md:mx-0"
+            >
+              QA & Test Automation Engineer who turns{" "}
+              <span className="text-foreground font-medium">chaos into confidence</span> —
+              shipping reliable, battle-tested software at scale.
+            </motion.p>
+          </motion.div>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="flex items-center justify-center md:justify-start gap-3 flex-wrap mb-6"
+          >
+            <a
+              href="/Meghna_Singh_Resume.pdf"
+              download
+              className="group flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
+            >
+              <Download size={15} />
+              Download Resume
+            </a>
+            <a
+              href="mailto:smeghna20@outlook.com"
+              className="group flex items-center gap-2 px-7 py-3.5 rounded-full glass-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 text-sm font-medium hover:-translate-y-0.5"
+            >
+              <Mail size={15} className="text-primary" />
+              Get in Touch
+            </a>
+          </motion.div>
+
+          {/* Social links */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="flex items-center justify-center md:justify-start gap-4 flex-wrap mb-10"
+          >
+            {[
+              { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/meghna-singh20" },
+              { icon: Github, label: "GitHub", href: "https://github.com/Singhmeghna" },
+            ].map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 text-sm"
+              >
+                <Icon size={15} />
+                <span>{label}</span>
+              </a>
+            ))}
+            <span className="flex items-center gap-2 text-muted-foreground/60 text-sm">
+              <MapPin size={13} />
+              Toronto, ON
             </span>
           </motion.div>
 
-          {/* Name */}
-          <h1 className="text-7xl md:text-9xl font-serif font-bold tracking-tight mb-2 leading-[0.9]">
-            Meghna
-          </h1>
-          <h1 className="text-7xl md:text-9xl font-serif font-bold tracking-tight mb-8 leading-[0.9]">
-            <span className="text-gradient">Singh</span>
-          </h1>
-
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-lg mx-auto leading-relaxed mb-12 font-light"
+          {/* Impact stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="grid grid-cols-3 gap-4 max-w-md mx-auto md:mx-0"
           >
-            QA & Test Automation Engineer who turns{" "}
-            <span className="text-foreground font-medium">chaos into confidence</span> —
-            shipping reliable, battle-tested software at scale.
-          </motion.p>
-        </motion.div>
-
-        {/* CTA buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="flex items-center justify-center gap-3 flex-wrap mb-8"
-        >
-          <a
-            href="/Meghna_Singh_Resume.pdf"
-            download
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
-          >
-            <Download size={15} />
-            Download Resume
-          </a>
-          <a
-            href="mailto:smeghna20@outlook.com"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-full glass-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 text-sm font-medium hover:-translate-y-0.5"
-          >
-            <Mail size={15} className="text-primary" />
-            Get in Touch
-          </a>
-        </motion.div>
-
-        {/* Social links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="flex items-center justify-center gap-4 flex-wrap"
-        >
-          {[
-            { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/meghna-singh20" },
-            { icon: Github, label: "GitHub", href: "https://github.com/Singhmeghna" },
-          ].map(({ icon: Icon, label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 text-sm"
-            >
-              <Icon size={15} />
-              <span>{label}</span>
-            </a>
-          ))}
-          <span className="flex items-center gap-2 text-muted-foreground/60 text-sm">
-            <MapPin size={13} />
-            Toronto, ON
-          </span>
-        </motion.div>
-
-        {/* Impact stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="mt-16 grid grid-cols-3 gap-4 max-w-md mx-auto"
-        >
-          {[
-            { value: "3+", label: "Years Experience", icon: Zap },
-            { value: "48%", label: "Efficiency Gains", icon: Sparkles },
-            { value: "1000+", label: "Users Impacted", icon: Shield },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center glass-card rounded-2xl py-5 px-3 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-              <stat.icon size={16} className="text-primary mx-auto mb-2" />
-              <p className="text-2xl md:text-3xl font-serif font-bold text-gradient">{stat.value}</p>
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
+            {[
+              { value: "3+", label: "Years Experience", icon: Zap },
+              { value: "48%", label: "Efficiency Gains", icon: Sparkles },
+              { value: "1000+", label: "Users Impacted", icon: Shield },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center glass-card rounded-2xl py-5 px-3 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <stat.icon size={16} className="text-primary mx-auto mb-2" />
+                <p className="text-2xl md:text-3xl font-serif font-bold text-gradient">{stat.value}</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
