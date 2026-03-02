@@ -197,7 +197,7 @@ const ExperienceSection = () => {
                           </div>
                         </div>
                         {item.tagline && (
-                          <p className="text-accent/80 italic text-sm font-serif mt-2">{item.tagline}</p>
+                          <p className="text-foreground/70 italic text-sm font-serif mt-2">{item.tagline}</p>
                         )}
                       </div>
 
