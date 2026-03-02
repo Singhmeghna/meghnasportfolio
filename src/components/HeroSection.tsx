@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield } from "lucide-react";
+import meghnaPhoto from "@/assets/meghna-photo.jpeg";
 
 const HeroSection = () => {
   return (
@@ -45,11 +46,23 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
+          {/* Profile photo */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.15, duration: 0.6, type: "spring" }}
+            className="mb-8"
+          >
+            <div className="w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto ring-4 ring-primary/20 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/20 animate-pulse-glow">
+              <img src={meghnaPhoto} alt="Meghna Singh" className="w-full h-full object-cover" />
+            </div>
+          </motion.div>
+
           {/* Status badge */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
+            transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card mb-10 shadow-lg shadow-primary/5"
           >
             <span className="relative flex h-2.5 w-2.5">
