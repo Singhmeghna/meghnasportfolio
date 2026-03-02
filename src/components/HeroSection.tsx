@@ -45,17 +45,6 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          {/* Profile photo */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.6, type: "spring" }}
-            className="mb-8"
-          >
-            <div className="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto ring-4 ring-primary/20 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/20 animate-pulse-glow">
-              <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
-            </div>
-          </motion.div>
 
           {/* Status badge */}
           <motion.div
