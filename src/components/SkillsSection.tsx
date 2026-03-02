@@ -1,95 +1,44 @@
 import { motion } from "framer-motion";
-import { Zap, Code2, GitBranch, FlaskConical, BarChart3, Users } from "lucide-react";
+import { Zap } from "lucide-react";
+import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from "recharts";
 
 const skillCategories = [
   {
     title: "Automation",
-    icon: Zap,
+    proficiency: 90,
     skills: ["pytest", "REST API Testing", "Postman", "SOAP UI", "Python/C# Backend Automation", "Protocol-Level Automation"],
   },
   {
     title: "Programming",
-    icon: Code2,
+    proficiency: 85,
     skills: ["Python", "C#", "MySQL", "JSON", "XML", "Multithreading", "Data Validation Scripts", "Telnet", "FTP/SFTP", "Logging"],
   },
   {
     title: "CI/CD & VCS",
-    icon: GitBranch,
+    proficiency: 80,
     skills: ["Git", "GitHub", "Jenkins", "CI/CD", "Docker", "SVN", "Jira", "Confluence", "ServiceNow"],
   },
   {
     title: "Testing",
-    icon: FlaskConical,
+    proficiency: 95,
     skills: ["Manual & Automated Testing", "Regression", "Integration", "Validation", "Stability & Reliability", "Test Planning", "Test Case Design", "Defect Tracking", "Error Handling"],
   },
   {
     title: "Analytics",
-    icon: BarChart3,
+    proficiency: 75,
     skills: ["Root Cause Analysis", "Performance Tracking", "Metrics Dashboards", "System Monitoring", "Quality Metrics", "Defect Prevention", "Continuous Improvement"],
   },
   {
     title: "Methods",
-    icon: Users,
+    proficiency: 85,
     skills: ["Agile", "Scrum", "Waterfall", "Requirements Management", "Cross-Functional Collaboration"],
   },
 ];
 
-const MarqueeRow = ({
-  category,
-  reverse = false,
-  speed = 30,
-}: {
-  category: typeof skillCategories[number];
-  reverse?: boolean;
-  speed?: number;
-}) => {
-  const Icon = category.icon;
-  // Duplicate items for seamless loop
-  const items = [...category.skills, ...category.skills];
-
-  return (
-    <div className="group relative py-3 overflow-hidden">
-      {/* Category label */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-background via-background to-transparent pr-6 pl-1 flex items-center gap-2">
-        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-          <Icon size={16} className="text-primary" />
-        </div>
-        <span className="text-xs font-semibold text-foreground/70 uppercase tracking-wider whitespace-nowrap">
-          {category.title}
-        </span>
-      </div>
-
-      {/* Scrolling track */}
-      <div className="ml-[160px]">
-        <motion.div
-          className="flex gap-3 w-max"
-          animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: speed,
-              ease: "linear",
-            },
-          }}
-          whileHover={{ animationPlayState: "paused" }}
-        >
-          {items.map((skill, j) => (
-            <span
-              key={`${skill}-${j}`}
-              className="flex-shrink-0 px-4 py-2 text-sm rounded-full border border-border bg-card text-foreground/80 font-medium hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default whitespace-nowrap"
-            >
-              {skill}
-            </span>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Fade edges */}
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-    </div>
-  );
-};
+const radarData = skillCategories.map((cat) => ({
+  subject: cat.title,
+  value: cat.proficiency,
+}));
 
 const SkillsSection = () => {
   return (
@@ -117,23 +66,68 @@ const SkillsSection = () => {
           <div className="section-divider" />
         </motion.div>
 
-        {/* Marquee rows */}
-        <div className="space-y-2">
-          {skillCategories.map((cat, i) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
-              <MarqueeRow
-                category={cat}
-                reverse={i % 2 === 1}
-                speed={25 + i * 5}
-              />
-            </motion.div>
-          ))}
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* Radar chart */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full lg:w-[420px] flex-shrink-0"
+          >
+            <div className="relative">
+              <ResponsiveContainer width="100%" height={380}>
+                <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
+                  <PolarGrid stroke="hsl(var(--border))" strokeWidth={0.5} />
+                  <PolarAngleAxis
+                    dataKey="subject"
+                    tick={{
+                      fill: "hsl(var(--muted-foreground))",
+                      fontSize: 12,
+                      fontWeight: 600,
+                    }}
+                  />
+                  <Radar
+                    name="Proficiency"
+                    dataKey="value"
+                    stroke="hsl(var(--primary))"
+                    fill="hsl(var(--primary))"
+                    fillOpacity={0.15}
+                    strokeWidth={2}
+                  />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+          </motion.div>
+
+          {/* Skill tags grouped by category */}
+          <div className="flex-1 space-y-5">
+            {skillCategories.map((cat, i) => (
+              <motion.div
+                key={cat.title}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-sm font-semibold text-foreground/80">{cat.title}</h3>
+                  <div className="flex-1 h-px bg-border" />
+                  <span className="text-xs text-primary font-bold">{cat.proficiency}%</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-xs rounded-full bg-secondary text-secondary-foreground border border-transparent hover:border-primary/20 hover:bg-primary/5 hover:text-foreground transition-all duration-300 cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
