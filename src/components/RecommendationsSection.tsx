@@ -56,7 +56,7 @@ const RecommendationsSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
@@ -82,7 +82,7 @@ const RecommendationsSection = () => {
               key={rec.name}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
               className="group relative"
             >
