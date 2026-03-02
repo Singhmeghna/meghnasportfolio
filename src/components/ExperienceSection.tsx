@@ -124,13 +124,11 @@ const ExperienceSection = () => {
                 <div className="space-y-4 mb-6">
                   {exp.highlights.map((h, j) => (
                     <div key={j} className="flex items-start gap-4">
-                      {h.metric && (
-                        <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-accent/20">
-                          <TrendingUp size={10} />
-                          {h.metric}
-                        </span>
-                      )}
-                      <p className="text-muted-foreground text-sm leading-relaxed">{h.text}</p>
+                      <span className="flex-shrink-0 w-[120px] inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-accent/20">
+                        <TrendingUp size={10} />
+                        {h.metric}
+                      </span>
+                      <p className="text-muted-foreground text-sm leading-relaxed flex-1">{h.text}</p>
                     </div>
                   ))}
                 </div>
