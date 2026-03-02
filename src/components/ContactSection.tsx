@@ -3,11 +3,9 @@ import { Mail, Linkedin, Github, Phone, ArrowUpRight, Download } from "lucide-re
 
 const ContactSection = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden bg-[#EFF6FF]" id="contact">
-      {/* Navy-tinted radial background */}
+    <section className="py-32 px-6 relative overflow-hidden" id="contact">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.04] blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background pointer-events-none" />
       </div>
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
