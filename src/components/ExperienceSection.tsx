@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { TrendingUp, ArrowUpRight, Briefcase, Building2, MapPin, Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TrendingUp, Briefcase, Building2, MapPin, Calendar, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 interface Experience {
   company: string;
@@ -7,6 +8,7 @@ interface Experience {
   period: string;
   location: string;
   tagline: string;
+  current?: boolean;
   highlights: { text: string; metric?: string }[];
   skills: string[];
 }
@@ -14,16 +16,17 @@ interface Experience {
 const experiences: Experience[] = [
   {
     company: "Mercor",
-    role: "Quality Systems Analyst (Documentation & Procedures) (Contract)",
+    role: "Quality Systems Analyst (Contract)",
     period: "Jan 2026 – Present",
     location: "Toronto, ON",
     tagline: "Raising the bar on AI quality evaluation at scale",
+    current: true,
     highlights: [
       { text: "Elevated model quality score from 3.5 to 4.2 and reduced rewrites by 25% by architecting constraint-driven RL Studio prompts to evaluate LLM outputs against 100+ page enterprise technical manuals.", metric: "↑ 20% quality" },
       { text: "Drove a 30% increase in approval rates by developing structured answer keys and executing rigorous model alignment audits.", metric: "30% ↑ approvals" },
       { text: "Standardized evaluation across 50+ procedural documents by strengthening Golden Responses and enforcing rubric compliance.", metric: "50+ docs" },
     ],
-    skills: ["LLM Evaluation", "Prompt Engineering", "Quality Assurance", "Requirements Analysis", "Rubric Design", "Documentation Governance", "Test Case Design", "AI Model Validation", "RL Studio"],
+    skills: ["LLM Evaluation", "Prompt Engineering", "Quality Assurance", "Rubric Design", "AI Model Validation", "RL Studio"],
   },
   {
     company: "Lumentum",
@@ -32,37 +35,35 @@ const experiences: Experience[] = [
     location: "Ottawa, ON",
     tagline: "Automating firmware QA for photonics hardware at enterprise scale",
     highlights: [
-      { text: "Reduced firmware batch update time by 48% by developing a Python-based QA automation system with pytest validation, REST API testing, Telnet/FTP checks, retry, rollback logic, and traceable logging for 30+ devices.", metric: "48% faster" },
-      { text: "Cut device setup time by 46% by automating raw test data processing and calibration file generation in C#/Python with pytest validation, Protobuf, REST API integration, and database integration, enhancing overall test readiness.", metric: "46% faster" },
-      { text: "Improved setup efficiency by 40% and eliminated manual input errors by creating C# desktop tools with safety checks, UI presets, and read-back validation, integrated into production workflows.", metric: "40% ↑ efficiency" },
-      { text: "Enhanced device reliability by testing performance across 5–65°C and ±2.4V, logging drift data, and collaborating with R&D to optimize accuracy and stability.", metric: "Temp range QA" },
-      { text: "Verified product safety through stability validation across 5–50°C, identifying early risks and strengthening long-term reliability.", metric: "Safety validation" },
+      { text: "Reduced firmware batch update time by 48% by developing a Python-based QA automation system with pytest validation, REST API testing, and traceable logging for 30+ devices.", metric: "48% faster" },
+      { text: "Cut device setup time by 46% by automating calibration file generation in C#/Python with Protobuf and database integration.", metric: "46% faster" },
+      { text: "Improved setup efficiency by 40% by creating C# desktop tools with safety checks, UI presets, and read-back validation.", metric: "40% ↑ efficiency" },
     ],
-    skills: ["Python", "C#", "pytest", "REST API Testing", "Telnet/FTP", "Logging", "Protobuf", "SQL", "Firmware QA", "Production Testing", "Manual Testing", "Test Planning", "Automation Framework Integration (C#)", "CI/CD", "Jira", "Confluence"],
+    skills: ["Python", "C#", "pytest", "REST API Testing", "Protobuf", "SQL", "Firmware QA", "CI/CD"],
   },
   {
     company: "Wipro Limited",
-    role: "Software Developer Engineer (Testing & Integration)",
+    role: "Software Developer Engineer (Testing)",
     period: "Jul 2021 – Jul 2023",
     location: "New Delhi, India",
     tagline: "Ensuring enterprise-grade reliability across SAP ecosystems",
     highlights: [
-      { text: "Improved system reliability for 1,000+ users by designing and executing QA test plans for 12+ SAP and non-SAP integrations, performing functional, regression, and validation testing for scalable, defect-free releases.", metric: "1000+ users" },
-      { text: "Increased data accuracy across 50+ interfaces by leading manual and integration testing, performing defect triage, and collaborating with development to resolve inconsistencies.", metric: "50+ interfaces" },
-      { text: "Reduced downtime by resolving SAP PI/PO incidents via regression-tested hotfixes, root-cause analysis, and QA coordination.", metric: "↓ Downtime" },
-      { text: "Expanded API coverage and improved observability by validating REST and SOAP integrations using Postman and SOAP UI, while configuring SAP Solution Manager for automated monitoring.", metric: "API coverage ↑" },
-      { text: "Accelerated QA onboarding by 30% by documenting QA workflows and architecture in Confluence and Visio, improving clarity.", metric: "30% faster" },
+      { text: "Improved system reliability for 1,000+ users by designing QA test plans for 12+ SAP and non-SAP integrations with functional, regression, and validation testing.", metric: "1000+ users" },
+      { text: "Increased data accuracy across 50+ interfaces by leading integration testing and collaborating with development to resolve inconsistencies.", metric: "50+ interfaces" },
+      { text: "Accelerated QA onboarding by 30% by documenting workflows and architecture in Confluence and Visio.", metric: "30% faster" },
     ],
-    skills: ["SAP PI/PO", "REST API", "SOAP UI", "Postman", "Integration Testing", "Regression Testing", "Manual Testing", "Performance Testing", "Test Planning", "Defect Triage", "Root Cause Analysis", "Jira", "Confluence", "Visio", "Agile", "QA Documentation"],
+    skills: ["SAP PI/PO", "REST API", "Postman", "Integration Testing", "Regression Testing", "Jira", "Agile", "QA Documentation"],
   },
 ];
 
 const ExperienceSection = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+
   return (
     <section className="py-32 px-6 relative" id="experience">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/[0.03] to-transparent pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,70 +84,137 @@ const ExperienceSection = () => {
           <div className="section-divider mt-6" />
         </motion.div>
 
-        <div className="space-y-10">
-          {experiences.map((exp, i) => (
-            <motion.div
-              key={exp.company}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
-            >
-              <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary/20" />
+        {/* Timeline */}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-px bg-border" />
 
-              <div className="p-8 md:p-10">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <Building2 size={20} className="text-primary" />
-                      <h3 className="text-3xl font-serif font-bold group-hover:text-gradient transition-all duration-300">
-                        {exp.company}
-                      </h3>
-                      <ArrowUpRight size={18} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          <div className="space-y-6">
+            {experiences.map((exp, i) => {
+              const isExpanded = expandedIndex === i;
+
+              return (
+                <motion.div
+                  key={exp.company}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="relative pl-12 md:pl-16"
+                >
+                  {/* Timeline dot */}
+                  <div className={`absolute left-[13px] md:left-[17px] top-7 w-[13px] h-[13px] rounded-full border-2 z-10 transition-colors duration-300 ${
+                    exp.current
+                      ? "bg-primary border-primary shadow-lg shadow-primary/30"
+                      : isExpanded
+                        ? "bg-primary/80 border-primary/80"
+                        : "bg-card border-muted-foreground/30"
+                  }`}>
+                    {exp.current && (
+                      <span className="absolute -inset-1 rounded-full bg-primary/20 animate-ping" />
+                    )}
+                  </div>
+
+                  {/* Card */}
+                  <div
+                    className={`group bg-card rounded-2xl border overflow-hidden transition-all duration-500 cursor-pointer ${
+                      isExpanded
+                        ? "border-primary/30 shadow-xl shadow-primary/5"
+                        : "border-border hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5"
+                    }`}
+                    onClick={() => setExpandedIndex(isExpanded ? null : i)}
+                  >
+                    {/* Collapsed header — always visible */}
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1 flex-wrap">
+                            {exp.current && (
+                              <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold rounded-full bg-primary/15 text-primary border border-primary/20">
+                                Current
+                              </span>
+                            )}
+                            <span className="text-muted-foreground text-xs flex items-center gap-1">
+                              <Calendar size={11} />
+                              {exp.period}
+                            </span>
+                            <span className="text-muted-foreground/50 hidden sm:inline">·</span>
+                            <span className="text-muted-foreground text-xs flex items-center gap-1 hidden sm:flex">
+                              <MapPin size={11} />
+                              {exp.location}
+                            </span>
+                          </div>
+
+                          <h3 className="text-2xl font-serif font-bold group-hover:text-gradient transition-colors">
+                            {exp.company}
+                          </h3>
+                          <p className="text-foreground/70 text-sm">{exp.role}</p>
+                        </div>
+
+                        <motion.div
+                          animate={{ rotate: isExpanded ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="flex-shrink-0 mt-2"
+                        >
+                          <ChevronDown size={20} className="text-muted-foreground" />
+                        </motion.div>
+                      </div>
+
+                      <p className="text-accent/80 italic text-sm font-serif mt-2">{exp.tagline}</p>
                     </div>
-                    <p className="text-foreground/80 text-sm font-medium ml-8">{exp.role}</p>
-                  </div>
-                  <div className="text-muted-foreground text-xs mt-3 md:mt-0 md:text-right flex flex-col gap-1.5">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-semibold">
-                      <Calendar size={11} />
-                      {exp.period}
-                    </span>
-                    <span className="inline-flex items-center gap-1 justify-end">
-                      <MapPin size={11} />
-                      {exp.location}
-                    </span>
-                  </div>
-                </div>
 
-                <p className="text-accent italic text-sm mb-6 font-serif ml-8">{exp.tagline}</p>
+                    {/* Expandable content */}
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.4, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 md:px-8 pb-6 md:pb-8">
+                            <div className="h-px bg-border mb-6" />
 
-                <div className="space-y-4 mb-6">
-                  {exp.highlights.map((h, j) => (
-                    <div key={j} className="flex items-start gap-4">
-                      <span className="flex-shrink-0 w-[120px] inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-accent/20">
-                        <TrendingUp size={10} />
-                        {h.metric}
-                      </span>
-                      <p className="text-muted-foreground text-sm leading-relaxed flex-1">{h.text}</p>
-                    </div>
-                  ))}
-                </div>
+                            {/* Highlights */}
+                            <div className="space-y-3 mb-6">
+                              {exp.highlights.map((h, j) => (
+                                <motion.div
+                                  key={j}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: j * 0.08 }}
+                                  className="flex items-start gap-3"
+                                >
+                                  <span className="flex-shrink-0 w-[100px] inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-accent/20">
+                                    <TrendingUp size={10} />
+                                    {h.metric}
+                                  </span>
+                                  <p className="text-muted-foreground text-sm leading-relaxed flex-1">{h.text}</p>
+                                </motion.div>
+                              ))}
+                            </div>
 
-                {/* Per-role skills */}
-                <div className="pt-4 border-t border-border">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills & Tools</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {exp.skills.map((skill) => (
-                      <span key={skill} className="px-2.5 py-1 text-[10px] rounded-full bg-secondary text-secondary-foreground font-medium hover:bg-primary/10 hover:text-primary transition-colors cursor-default">
-                        {skill}
-                      </span>
-                    ))}
+                            {/* Skills */}
+                            <div>
+                              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills & Tools</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {exp.skills.map((skill) => (
+                                  <span key={skill} className="px-2.5 py-1 text-[10px] rounded-full bg-secondary text-secondary-foreground font-medium">
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
