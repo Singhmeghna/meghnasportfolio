@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield, Phone, Bug, TestTube, FileCheck } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield, Phone } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -26,13 +26,13 @@ const HeroSection = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         {/* Faded QA icons inside the circle */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
           <div className="relative w-full h-full">
-            <Bug size={26} color="hsl(221, 83%, 53%)" className="absolute top-[18%] left-[32%] opacity-40" />
-            <FileCheck size={24} color="hsl(173, 58%, 39%)" className="absolute top-[22%] right-[22%] opacity-45" />
-            <Shield size={28} color="hsl(221, 83%, 53%)" className="absolute bottom-[28%] left-[22%] opacity-35" />
-            <Zap size={22} color="hsl(173, 58%, 39%)" className="absolute bottom-[22%] right-[28%] opacity-40" />
-            <TestTube size={30} color="hsl(221, 83%, 53%)" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-45" />
+            <span className="absolute top-[15%] left-[28%] text-3xl opacity-40">🐛</span>
+            <span className="absolute top-[20%] right-[20%] text-2xl opacity-45">🧪</span>
+            <span className="absolute bottom-[25%] left-[20%] text-3xl opacity-35">🛡️</span>
+            <span className="absolute bottom-[20%] right-[25%] text-2xl opacity-40">⚡</span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl opacity-45">✅</span>
           </div>
         </div>
       </motion.div>
