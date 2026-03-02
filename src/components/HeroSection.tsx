@@ -19,36 +19,33 @@ const HeroSection = () => {
         transition={{ duration: 10, repeat: Infinity }}
       />
 
-      {/* Floating geometric decorations */}
-      <motion.div className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center" animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }}>
-        <div className="absolute inset-0 pointer-events-none select-none">
-          {/* 8 emojis evenly spaced around the circle (45° apart), radius ~42% from center */}
-          {[
-            { emoji: "🐛", angle: 0 },
-            { emoji: "🧪", angle: 45 },
-            { emoji: "⚙️", angle: 90 },
-            { emoji: "📋", angle: 135 },
-            { emoji: "✅", angle: 180 },
-            { emoji: "🛡️", angle: 225 },
-            { emoji: "⚡", angle: 270 },
-            { emoji: "🔍", angle: 315 },
-          ].map(({ emoji, angle }) => {
-            const rad = (angle * Math.PI) / 180;
-            const x = 50 + 38 * Math.cos(rad);
-            const y = 50 + 38 * Math.sin(rad);
-            return (
-              <span
-                key={angle}
-                className="absolute text-xl opacity-40 -translate-x-1/2 -translate-y-1/2"
-                style={{ left: `${x}%`, top: `${y}%` }}
-              >
-                {emoji}
-              </span>
-            );
-          })}
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl opacity-40">🤖</span>
-        </div>
-      </motion.div>
+      {/* Floating glassmorphic achievement cards */}
+      <div className="absolute top-20 right-[8%] w-80 h-80 hidden lg:block pointer-events-none">
+        {[
+          { label: "Test Cases Automated", value: "500+", icon: "⚡", rotate: -6, x: 0, y: 0, delay: 0.2 },
+          { label: "Bug Detection Rate", value: "98%", icon: "🐛", rotate: 4, x: 30, y: 70, delay: 0.4 },
+          { label: "CI/CD Pipelines", value: "15+", icon: "🔄", rotate: -3, x: -10, y: 140, delay: 0.6 },
+          { label: "Frameworks Mastered", value: "8+", icon: "🧪", rotate: 5, x: 40, y: 210, delay: 0.8 },
+        ].map((card, i) => (
+          <motion.div
+            key={card.label}
+            className="absolute glass-card rounded-2xl px-5 py-4 shadow-xl shadow-primary/5 border border-primary/10 backdrop-blur-xl w-56"
+            style={{ left: card.x, top: card.y, rotate: `${card.rotate}deg`, zIndex: 4 - i }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: card.delay, duration: 0.6, type: "spring" }}
+            whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">{card.icon}</span>
+              <div>
+                <p className="text-2xl font-serif font-bold text-gradient leading-none">{card.value}</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{card.label}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
       <motion.div
         className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow"
         initial={{ opacity: 0, scale: 0.8 }}
