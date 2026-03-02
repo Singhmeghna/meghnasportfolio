@@ -14,29 +14,6 @@ const HeroSection = () => {
         style={{ background: 'radial-gradient(ellipse at 20% 80%, hsl(173 58% 39% / 0.06), transparent 60%)' }}
       />
 
-      {/* Floating glassmorphic achievement cards */}
-      <div className="absolute top-20 right-[8%] w-80 h-80 hidden lg:block pointer-events-none">
-        {[
-          { label: "Test Cases Automated", value: "500+", icon: "⚡", rotate: -6, x: 0, y: 0 },
-          { label: "Bug Detection Rate", value: "98%", icon: "🐛", rotate: 4, x: 30, y: 70 },
-          { label: "CI/CD Pipelines", value: "15+", icon: "🔄", rotate: -3, x: -10, y: 140 },
-          { label: "Frameworks Mastered", value: "8+", icon: "🧪", rotate: 5, x: 40, y: 210 },
-        ].map((card, i) => (
-          <div
-            key={card.label}
-            className="absolute glass-card rounded-2xl px-5 py-4 shadow-xl shadow-primary/5 border border-primary/10 backdrop-blur-xl w-56"
-            style={{ left: card.x, top: card.y, rotate: `${card.rotate}deg`, zIndex: 4 - i }}
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">{card.icon}</span>
-              <div>
-                <p className="text-2xl font-serif font-bold text-gradient leading-none">{card.value}</p>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{card.label}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
       {/* Photo - absolute on sm+, hidden on mobile (shown inline below) */}
       <div className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 hidden sm:block">
         <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
