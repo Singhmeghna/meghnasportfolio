@@ -118,7 +118,7 @@ const HeroSection = () => {
           className="mt-16 grid grid-cols-3 gap-6 max-w-md mx-auto"
         >
           {[
-            { value: "4+", label: "Years Experience" },
+            { value: "3+", label: "Years Experience" },
             { value: "48%", label: "Efficiency Gains" },
             { value: "1000+", label: "Users Impacted" },
           ].map((stat) => (

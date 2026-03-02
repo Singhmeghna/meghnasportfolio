@@ -35,23 +35,19 @@ const RecommendationsSection = () => {
     <section className="py-32 px-6 relative overflow-hidden" id="recommendations">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img
-          src={testimonialBg}
-          alt=""
-          className="w-full h-full object-cover opacity-[0.07]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <img src={testimonialBg} alt="" className="w-full h-full object-cover opacity-[0.05]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
 
-      {/* Floating decorative elements */}
+      {/* Floating LinkedIn-blue orbs */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 rounded-full bg-primary/5 blur-3xl"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        className="absolute top-20 left-10 w-80 h-80 rounded-full bg-[#0077B5]/[0.06] blur-3xl"
+        animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-accent/5 blur-3xl"
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+        className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#0077B5]/[0.04] blur-3xl"
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 10, repeat: Infinity }}
       />
 
@@ -64,19 +60,19 @@ const RecommendationsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <Sparkles size={14} className="text-primary" />
-            <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0077B5]/10 border border-[#0077B5]/20 mb-6">
+            <Linkedin size={14} className="text-[#0077B5]" />
+            <span className="text-[#0077B5] text-xs tracking-[0.2em] uppercase font-semibold">
               LinkedIn Recommendations
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
-            What <span className="text-gradient italic">leaders</span> say
+            What <span className="italic" style={{ color: '#0077B5' }}>leaders</span> say
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Trusted by senior professionals who've witnessed the impact firsthand.
           </p>
-          <div className="section-divider mt-6 mx-auto" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#0077B5]/40 to-transparent w-32 mt-6 mx-auto" />
         </motion.div>
 
         {/* Recommendation Cards */}
@@ -90,72 +86,53 @@ const RecommendationsSection = () => {
               transition={{ duration: 0.6, delay: i * 0.2 }}
               className="group relative"
             >
-              {/* Card */}
-              <div className="relative bg-card rounded-3xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
-                {/* Top gradient bar */}
-                <div className="h-1.5 bg-gradient-to-r from-primary via-accent to-primary/30" />
+              <div className="relative bg-card rounded-3xl border border-border overflow-hidden hover:border-[#0077B5]/30 hover:shadow-2xl hover:shadow-[#0077B5]/10 transition-all duration-500">
+                {/* Top LinkedIn-blue gradient bar */}
+                <div className="h-1.5 bg-gradient-to-r from-[#0077B5] via-[#00A0DC] to-[#0077B5]/30" />
 
                 <div className="p-8 md:p-10">
-                  {/* Large quote icon */}
-                  <div className="mb-6 relative">
-                    <Quote
-                      size={48}
-                      className="text-primary/15 absolute -top-2 -left-1"
-                      fill="currentColor"
-                    />
-                    <Quote
-                      size={48}
-                      className="text-primary/10 absolute -top-1 left-1"
-                      fill="currentColor"
-                    />
+                  {/* LinkedIn icon + quote */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="relative">
+                      <Quote size={44} className="text-[#0077B5]/15" fill="currentColor" />
+                      <Quote size={44} className="text-[#0077B5]/10 absolute top-1 left-1" fill="currentColor" />
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-[#0077B5]/10 flex items-center justify-center group-hover:bg-[#0077B5] group-hover:text-white transition-all duration-300">
+                      <Linkedin size={18} className="text-[#0077B5] group-hover:text-white transition-colors" />
+                    </div>
                   </div>
 
                   {/* Testimonial text */}
-                  <p className="text-foreground/80 text-base leading-relaxed mb-8 relative z-10 font-light italic pl-2 border-l-2 border-primary/20">
+                  <p className="text-foreground/80 text-base leading-[1.8] mb-8 relative z-10 font-light italic pl-4 border-l-2 border-[#0077B5]/25">
                     "{rec.text}"
                   </p>
 
                   {/* Stars */}
                   <div className="flex gap-1 mb-6">
                     {[...Array(5)].map((_, j) => (
-                      <Star
-                        key={j}
-                        size={14}
-                        className="text-primary fill-primary"
-                      />
+                      <Star key={j} size={14} className="text-[#F5C518] fill-[#F5C518]" />
                     ))}
                   </div>
 
                   {/* Author info */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-border">
-                    {/* Avatar */}
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-serif font-bold text-lg shadow-lg shadow-primary/20">
+                  <div className="flex items-center gap-4 pt-6 border-t border-border/60">
+                    {/* Avatar with LinkedIn-blue gradient */}
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0077B5] to-[#00A0DC] flex items-center justify-center text-white font-serif font-bold text-lg shadow-lg shadow-[#0077B5]/25 ring-2 ring-[#0077B5]/20 ring-offset-2 ring-offset-card">
                       {rec.initials}
                     </div>
 
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground text-sm">
-                        {rec.name}
-                      </h4>
-                      <p className="text-muted-foreground text-xs leading-relaxed">
-                        {rec.title}
-                      </p>
-                      <div className="flex items-center gap-2 mt-1.5">
-                        <span className="text-[10px] text-muted-foreground/70 uppercase tracking-wider">
-                          {rec.relationship} · {rec.date}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* LinkedIn badge */}
-                    <div className="flex-shrink-0 w-9 h-9 rounded-full bg-[#0077B5]/10 flex items-center justify-center group-hover:bg-[#0077B5]/20 transition-colors">
-                      <Linkedin size={16} className="text-[#0077B5]" />
+                      <h4 className="font-semibold text-foreground text-sm">{rec.name}</h4>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{rec.title}</p>
+                      <span className="text-[10px] text-[#0077B5]/60 uppercase tracking-wider font-medium mt-1 inline-block">
+                        {rec.relationship} · {rec.date}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Subtle corner decoration */}
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-primary/[0.04] to-transparent pointer-events-none rounded-tl-full" />
+                {/* Corner decoration */}
+                <div className="absolute bottom-0 right-0 w-36 h-36 bg-gradient-to-tl from-[#0077B5]/[0.04] to-transparent pointer-events-none rounded-tl-full" />
               </div>
             </motion.div>
           ))}
@@ -167,16 +144,16 @@ const RecommendationsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-14"
         >
           <a
-            href="https://www.linkedin.com/in/meghna-singh"
+            href="https://linkedin.com/in/meghna-singh20"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card border border-border text-sm font-medium text-muted-foreground hover:text-primary hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#0077B5] text-white text-sm font-semibold hover:bg-[#005f8d] hover:shadow-xl hover:shadow-[#0077B5]/25 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Linkedin size={16} />
-            View all recommendations on LinkedIn
+            View all on LinkedIn
           </a>
         </motion.div>
       </div>
