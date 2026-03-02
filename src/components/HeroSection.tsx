@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield, Phone, Bug, TestTube, CheckCircle, Settings, FileCheck } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield, Phone, Bug, TestTube, Settings, FileCheck } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -26,13 +26,13 @@ const HeroSection = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         {/* Faded QA icons inside the circle */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.15] pointer-events-none">
           <div className="relative w-full h-full">
             <Bug size={28} className="text-primary absolute top-[20%] left-[30%]" />
-            <TestTube size={24} className="text-primary absolute top-[25%] right-[25%]" />
-            <CheckCircle size={26} className="text-primary absolute bottom-[30%] left-[25%]" />
-            <Settings size={22} className="text-primary absolute bottom-[25%] right-[30%]" />
-            <FileCheck size={32} className="text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <FileCheck size={24} className="text-primary absolute top-[25%] right-[25%]" />
+            <Settings size={26} className="text-primary absolute bottom-[30%] left-[25%]" />
+            <Shield size={22} className="text-primary absolute bottom-[25%] right-[30%]" />
+            <TestTube size={32} className="text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           </div>
         </div>
       </motion.div>
