@@ -12,14 +12,14 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
       </div>
 
-      {/* Floating decorative shapes */}
+      {/* Floating navy decorative shapes */}
       <div className="absolute top-20 right-[15%] w-72 h-72 rounded-full border border-primary/10 animate-float" />
       <div className="absolute bottom-32 left-[10%] w-48 h-48 rounded-full border border-accent/10 animate-float-reverse" />
       <div className="absolute top-[40%] right-[8%] w-3 h-3 rounded-full bg-primary/30 glow-dot animate-float" />
-      <div className="absolute top-[25%] left-[12%] w-2 h-2 rounded-full bg-accent/30 glow-dot animate-float-reverse" />
+      <div className="absolute top-[25%] left-[12%] w-2 h-2 rounded-full bg-accent/40 glow-dot animate-float-reverse" />
 
       {/* Large faded initial */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] md:text-[28rem] font-serif font-bold text-foreground/[0.02] select-none pointer-events-none leading-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] md:text-[28rem] font-serif font-bold text-primary/[0.03] select-none pointer-events-none leading-none">
         M
       </div>
 
@@ -35,7 +35,7 @@ const HeroSection = () => {
             transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-primary font-sans text-xs tracking-wider uppercase font-medium">
               Available for opportunities
             </span>
