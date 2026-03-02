@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield } from "lucide-react";
-import meghnaPhoto from "@/assets/meghna-photo.jpeg";
 
 const HeroSection = () => {
   return (
@@ -54,7 +53,7 @@ const HeroSection = () => {
             className="mb-8"
           >
             <div className="w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto ring-4 ring-primary/20 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/20 animate-pulse-glow">
-              <img src={meghnaPhoto} alt="Meghna Singh" className="w-full h-full object-cover" />
+              <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover" />
             </div>
           </motion.div>
 
