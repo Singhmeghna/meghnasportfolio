@@ -32,7 +32,7 @@ const recommendations: Recommendation[] = [
 
 const RecommendationsSection = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden" id="recommendations">
+    <section className="py-20 px-6 relative overflow-hidden" id="recommendations">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <img src={testimonialBg} alt="" className="w-full h-full object-cover opacity-[0.05]" />

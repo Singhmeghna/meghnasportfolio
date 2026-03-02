@@ -82,7 +82,7 @@ const timeline: TimelineItem[] = [
 
 const ExperienceSection = () => {
   return (
-    <section className="py-32 px-6 relative" id="experience">
+    <section className="py-20 px-6 relative" id="experience">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/[0.03] to-transparent pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -91,7 +91,7 @@ const ExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-14"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Briefcase size={14} className="text-primary" />

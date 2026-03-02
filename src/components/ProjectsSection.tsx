@@ -18,7 +18,7 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section className="py-32 px-6 relative" id="projects">
+    <section className="py-20 px-6 relative" id="projects">
       <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-accent/[0.03] to-transparent pointer-events-none" />
 
       <div className="max-w-5xl mx-auto relative z-10">
