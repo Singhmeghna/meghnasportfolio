@@ -89,7 +89,7 @@ const ExperienceSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
@@ -119,7 +119,7 @@ const ExperienceSection = () => {
                   key={item.company}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
+                  viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="relative pl-12 md:pl-16"
                 >
@@ -209,7 +209,7 @@ const ExperienceSection = () => {
                               key={j}
                               initial={{ opacity: 0, y: 20 }}
                               whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true, amount: 0.3 }}
+                              viewport={{ once: true, margin: "-50px" }}
                               transition={{ delay: j * 0.06 }}
                               className="rounded-xl bg-secondary/50 border border-border p-4 hover:border-primary/20 hover:bg-secondary/80 transition-all duration-300 flex flex-col"
                             >

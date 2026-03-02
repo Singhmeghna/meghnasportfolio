@@ -12,7 +12,7 @@ const ContactSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Get in Touch</p>
@@ -29,7 +29,7 @@ const ContactSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ delay: 0.2, duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4"
         >
@@ -63,7 +63,7 @@ const ContactSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.4 }}
           className="flex items-center justify-center gap-6 text-muted-foreground text-sm"
         >
