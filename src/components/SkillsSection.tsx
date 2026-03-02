@@ -42,7 +42,7 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section className="py-20 px-6 relative overflow-hidden" id="skills">
+    <section className="py-12 px-6 relative overflow-hidden" id="skills">
       <div className="absolute inset-0 opacity-[0.02]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, hsl(221 83% 53%) 1px, transparent 0)`,
         backgroundSize: '40px 40px',
