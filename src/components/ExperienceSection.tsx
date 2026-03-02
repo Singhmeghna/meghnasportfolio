@@ -8,21 +8,23 @@ interface Experience {
   location: string;
   tagline: string;
   highlights: { text: string; metric?: string }[];
+  skills: string[];
   tags: string[];
 }
 
 const experiences: Experience[] = [
   {
     company: "Mercor",
-    role: "Quality Systems Analyst (Contract)",
+    role: "Quality Systems Analyst (Documentation & Procedures) (Contract)",
     period: "Jan 2026 – Present",
     location: "Toronto, ON",
     tagline: "Raising the bar on AI quality evaluation at scale",
     highlights: [
-      { text: "Elevated quality score from 3.5 → 4.2 by designing constraint-driven RL Studio prompts evaluating LLM outputs against 100+ page technical manuals.", metric: "↑ 20% quality" },
-      { text: "Drove a 30% increase in approval rate by producing structured answer keys and validating model alignment.", metric: "30% ↑ approvals" },
+      { text: "Elevated quality score from 3.5 to 4.2 and reduced rewrites by 25% by designing constraint-driven RL Studio prompts to evaluate LLM outputs against 100+ page technical manuals.", metric: "↑ 20% quality" },
+      { text: "Drove a 30% increase in approval rate by producing structured answer keys and validating model alignment and correctness.", metric: "30% ↑ approvals" },
       { text: "Standardized evaluation across 50+ procedural documents by strengthening Golden Responses and enforcing rubric compliance.", metric: "50+ docs" },
     ],
+    skills: ["Quality Assurance", "Requirements Analysis", "Documentation Review", "Test Case Design", "LLM Evaluation", "RL Studio"],
     tags: ["LLM Evaluation", "RL Studio", "Quality Assurance", "Documentation Review"],
   },
   {
@@ -32,11 +34,13 @@ const experiences: Experience[] = [
     location: "Ottawa, ON",
     tagline: "Automating firmware QA for photonics hardware at enterprise scale",
     highlights: [
-      { text: "Reduced firmware batch update time by 48% — built a Python-based QA automation system with pytest validation, REST API testing, retry/rollback logic for 30+ devices.", metric: "48% faster" },
-      { text: "Cut device setup time by 46% by automating calibration file generation in C#/Python with Protobuf and database integration.", metric: "46% faster" },
-      { text: "Improved setup efficiency by 40% and eliminated manual input errors with C# desktop tools, safety checks, and read-back validation.", metric: "40% ↑ efficiency" },
-      { text: "Enhanced device reliability by testing performance across 5–65°C and ±2.4V, logging drift data and collaborating with R&D.", metric: "Temp range QA" },
+      { text: "Reduced firmware batch update time by 48% by developing a Python-based QA automation system with pytest validation, REST API testing, Telnet/FTP checks, retry, rollback logic, and traceable logging for 30+ devices.", metric: "48% faster" },
+      { text: "Cut device setup time by 46% by automating raw test data processing and calibration file generation in C#/Python with pytest validation, Protobuf, REST API integration, and database integration, enhancing overall test readiness.", metric: "46% faster" },
+      { text: "Improved setup efficiency by 40% and eliminated manual input errors by creating C# desktop tools with safety checks, UI presets, and read-back validation, integrated into production workflows.", metric: "40% ↑ efficiency" },
+      { text: "Enhanced device reliability by testing performance across 5–65°C and ±2.4V, logging drift data, and collaborating with R&D to optimize accuracy and stability.", metric: "Temp range QA" },
+      { text: "Verified product safety through stability validation across 5–50°C, identifying early risks and strengthening long-term reliability.", metric: "Safety validation" },
     ],
+    skills: ["Python", "C#", "pytest", "REST API Testing", "Telnet/FTP", "Logging", "Protobuf", "SQL", "Firmware QA", "Manual Testing", "Test Planning", "Automation Framework Integration (C#)", "CI/CD", "Jira", "Confluence"],
     tags: ["Python", "C#", "pytest", "REST API", "Protobuf", "CI/CD", "Firmware QA"],
   },
   {
@@ -46,12 +50,13 @@ const experiences: Experience[] = [
     location: "New Delhi, India",
     tagline: "Ensuring enterprise-grade reliability across SAP ecosystems",
     highlights: [
-      { text: "Improved system reliability for 1,000+ users by designing and executing QA test plans for 12+ SAP and non-SAP integrations — functional, regression, and validation testing.", metric: "1000+ users" },
-      { text: "Increased data accuracy across 50+ interfaces by leading manual and integration testing, performing defect triage, and resolving inconsistencies.", metric: "50+ interfaces" },
+      { text: "Improved system reliability for 1,000+ users by designing and executing QA test plans for 12+ SAP and non-SAP integrations, performing functional, regression, and validation testing for scalable, defect-free releases.", metric: "1000+ users" },
+      { text: "Increased data accuracy across 50+ interfaces by leading manual and integration testing, performing defect triage, and collaborating with development to resolve inconsistencies.", metric: "50+ interfaces" },
       { text: "Reduced downtime by resolving SAP PI/PO incidents via regression-tested hotfixes, root-cause analysis, and QA coordination.", metric: "↓ Downtime" },
-      { text: "Expanded API coverage and improved observability by validating REST and SOAP integrations using Postman and SOAP UI.", metric: "API coverage ↑" },
-      { text: "Accelerated QA onboarding by 30% by documenting workflows and architecture in Confluence and Visio.", metric: "30% faster" },
+      { text: "Expanded API coverage and improved observability by validating REST and SOAP integrations using Postman and SOAP UI, while configuring SAP Solution Manager for automated monitoring.", metric: "API coverage ↑" },
+      { text: "Accelerated QA onboarding by 30% by documenting QA workflows and architecture in Confluence and Visio, improving clarity.", metric: "30% faster" },
     ],
+    skills: ["SAP PI/PO", "REST API", "SOAP UI", "Postman", "Integration Testing", "Regression Testing", "Manual Testing", "Performance Testing", "Test Planning", "Defect Triage", "Root Cause Analysis", "Jira", "Confluence", "Visio", "Agile", "QA Documentation"],
     tags: ["SAP PI/PO", "Postman", "SOAP UI", "Integration Testing", "Jira", "Agile"],
   },
 ];
@@ -122,6 +127,18 @@ const ExperienceSection = () => {
                       <p className="text-muted-foreground text-sm leading-relaxed">{h.text}</p>
                     </div>
                   ))}
+                </div>
+
+                {/* Per-role skills */}
+                <div className="mb-4">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills Used</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {exp.skills.map((skill) => (
+                      <span key={skill} className="px-2 py-0.5 text-[10px] rounded-full bg-primary/[0.06] text-primary/80 font-medium border border-primary/10">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="flex flex-wrap gap-2 pt-4 border-t border-border">

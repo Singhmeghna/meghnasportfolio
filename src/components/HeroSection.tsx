@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, MapPin, ArrowDown, Download } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
-      {/* Hero background image with overlay */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/85" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-      </div>
+      {/* Pure CSS gradient background — no image */}
+      <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.06] via-transparent to-accent/[0.04]" />
+      <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-to-bl from-primary/[0.05] to-transparent rounded-bl-[50%]" />
+      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-gradient-to-tr from-accent/[0.04] to-transparent rounded-tr-[50%]" />
 
-      {/* Floating navy decorative shapes */}
+      {/* Floating decorative shapes */}
       <div className="absolute top-20 right-[15%] w-72 h-72 rounded-full border border-primary/10 animate-float" />
       <div className="absolute bottom-32 left-[10%] w-48 h-48 rounded-full border border-accent/10 animate-float-reverse" />
       <div className="absolute top-[40%] right-[8%] w-3 h-3 rounded-full bg-primary/30 glow-dot animate-float" />
