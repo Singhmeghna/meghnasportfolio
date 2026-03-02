@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import skillsBg from "@/assets/skills-bg.jpg";
 
 const skillCategories = [
   {
@@ -31,6 +32,11 @@ const skillCategories = [
 const SkillsSection = () => {
   return (
     <section className="py-32 px-6 relative overflow-hidden" id="skills">
+      {/* Decorative background image */}
+      <div className="absolute top-10 -right-20 w-80 h-80 opacity-[0.06] rounded-full overflow-hidden pointer-events-none">
+        <img src={skillsBg} alt="" className="w-full h-full object-cover" />
+      </div>
+
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-[0.015]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, hsl(220 25% 10%) 1px, transparent 0)`,
