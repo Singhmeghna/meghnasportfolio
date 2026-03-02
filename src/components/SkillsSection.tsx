@@ -1,44 +1,44 @@
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
-import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from "recharts";
+import { Zap, Code2, GitBranch, FlaskConical, BarChart3, Users } from "lucide-react";
 
 const skillCategories = [
   {
     title: "Automation",
-    proficiency: 90,
+    icon: Zap,
+    color: "from-primary to-primary/60",
     skills: ["pytest", "REST API Testing", "Postman", "SOAP UI", "Python/C# Backend Automation", "Protocol-Level Automation"],
   },
   {
     title: "Programming",
-    proficiency: 85,
+    icon: Code2,
+    color: "from-accent to-accent/60",
     skills: ["Python", "C#", "MySQL", "JSON", "XML", "Multithreading", "Data Validation Scripts", "Telnet", "FTP/SFTP", "Logging"],
   },
   {
     title: "CI/CD & VCS",
-    proficiency: 80,
+    icon: GitBranch,
+    color: "from-primary to-accent",
     skills: ["Git", "GitHub", "Jenkins", "CI/CD", "Docker", "SVN", "Jira", "Confluence", "ServiceNow"],
   },
   {
     title: "Testing",
-    proficiency: 95,
+    icon: FlaskConical,
+    color: "from-accent to-primary/60",
     skills: ["Manual & Automated Testing", "Regression", "Integration", "Validation", "Stability & Reliability", "Test Planning", "Test Case Design", "Defect Tracking", "Error Handling"],
   },
   {
     title: "Analytics",
-    proficiency: 75,
+    icon: BarChart3,
+    color: "from-primary/80 to-accent/80",
     skills: ["Root Cause Analysis", "Performance Tracking", "Metrics Dashboards", "System Monitoring", "Quality Metrics", "Defect Prevention", "Continuous Improvement"],
   },
   {
     title: "Methods",
-    proficiency: 85,
+    icon: Users,
+    color: "from-accent/80 to-primary",
     skills: ["Agile", "Scrum", "Waterfall", "Requirements Management", "Cross-Functional Collaboration"],
   },
 ];
-
-const radarData = skillCategories.map((cat) => ({
-  subject: cat.title,
-  value: cat.proficiency,
-}));
 
 const SkillsSection = () => {
   return (
@@ -54,7 +54,7 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-20"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Zap size={14} className="text-accent" />
@@ -66,68 +66,36 @@ const SkillsSection = () => {
           <div className="section-divider" />
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Radar chart */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-full lg:w-[420px] flex-shrink-0"
-          >
-            <div className="relative">
-              <ResponsiveContainer width="100%" height={380}>
-                <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
-                  <PolarGrid stroke="hsl(var(--border))" strokeWidth={0.5} />
-                  <PolarAngleAxis
-                    dataKey="subject"
-                    tick={{
-                      fill: "hsl(var(--muted-foreground))",
-                      fontSize: 12,
-                      fontWeight: 600,
-                    }}
-                  />
-                  <Radar
-                    name="Proficiency"
-                    dataKey="value"
-                    stroke="hsl(var(--primary))"
-                    fill="hsl(var(--primary))"
-                    fillOpacity={0.15}
-                    strokeWidth={2}
-                  />
-                </RadarChart>
-              </ResponsiveContainer>
-            </div>
-          </motion.div>
-
-          {/* Skill tags grouped by category */}
-          <div className="flex-1 space-y-5">
-            {skillCategories.map((cat, i) => (
-              <motion.div
-                key={cat.title}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-sm font-semibold text-foreground/80">{cat.title}</h3>
-                  <div className="flex-1 h-px bg-border" />
-                  <span className="text-xs text-primary font-bold">{cat.proficiency}%</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 text-xs rounded-full bg-secondary text-secondary-foreground border border-transparent hover:border-primary/20 hover:bg-primary/5 hover:text-foreground transition-all duration-300 cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((cat, i) => (
+            <motion.div
+              key={cat.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
+            >
+              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cat.color} opacity-60`} />
+              
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <cat.icon size={22} className="text-primary" />
+              </div>
+              <h3 className="text-lg font-serif font-bold mb-4 group-hover:text-gradient transition-colors">
+                {cat.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 text-xs rounded-full bg-secondary text-secondary-foreground border border-transparent hover:border-primary/20 hover:bg-primary/5 hover:text-foreground transition-all duration-300 cursor-default"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
