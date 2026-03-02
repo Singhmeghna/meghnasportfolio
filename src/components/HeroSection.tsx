@@ -52,8 +52,8 @@ const HeroSection = () => {
             transition={{ delay: 0.15, duration: 0.6, type: "spring" }}
             className="mb-8"
           >
-            <div className="w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto ring-4 ring-primary/20 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/20 animate-pulse-glow">
-              <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover" />
+            <div className="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto ring-4 ring-primary/20 ring-offset-4 ring-offset-background overflow-hidden shadow-2xl shadow-primary/20 animate-pulse-glow">
+              <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
             </div>
           </motion.div>
 
