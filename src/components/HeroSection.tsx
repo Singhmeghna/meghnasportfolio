@@ -3,7 +3,7 @@ import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shi
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 pt-20">
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-background to-accent/[0.06]" />
       <motion.div
