@@ -87,9 +87,9 @@ const ExperienceSection = () => {
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
@@ -117,9 +117,9 @@ const ExperienceSection = () => {
               return (
                 <motion.div
                   key={item.company}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="relative pl-12 md:pl-16"
                 >
@@ -207,9 +207,9 @@ const ExperienceSection = () => {
                           {item.highlights?.map((h, j) => (
                             <motion.div
                               key={j}
-                              initial={{ opacity: 0, y: 10 }}
+                              initial={{ opacity: 0, y: 20 }}
                               whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true }}
+                              viewport={{ once: true, amount: 0.3 }}
                               transition={{ delay: j * 0.06 }}
                               className="rounded-xl bg-secondary/50 border border-border p-4 hover:border-primary/20 hover:bg-secondary/80 transition-all duration-300 flex flex-col"
                             >
