@@ -1,4 +1,70 @@
 import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const terminalLines = [
+  { type: "command", text: "$ npm run test:e2e" },
+  { type: "info", text: "Running 42 test suites..." },
+  { type: "pass", text: "PASS  auth.spec.ts (12 tests)" },
+  { type: "pass", text: "PASS  checkout.spec.ts (8 tests)" },
+  { type: "pass", text: "PASS  dashboard.spec.ts (15 tests)" },
+  { type: "pass", text: "PASS  api-integration.spec.ts (7 tests)" },
+  { type: "info", text: "" },
+  { type: "result", text: "Tests:  42 passed, 0 failed" },
+  { type: "result", text: "Time:   3.27s" },
+  { type: "success", text: "All tests passed!" },
+];
+
+const TerminalWidget = () => {
+  const [visibleLines, setVisibleLines] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleLines((prev) => {
+        if (prev >= terminalLines.length) {
+          // Reset after a pause
+          setTimeout(() => setVisibleLines(0), 2000);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 600);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="glass-card rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/60 w-full max-w-sm">
+      {/* Title bar */}
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/40 bg-muted/30">
+        <div className="flex gap-1.5">
+          <span className="w-3 h-3 rounded-full bg-destructive/70" />
+          <span className="w-3 h-3 rounded-full bg-primary/40" />
+          <span className="w-3 h-3 rounded-full bg-accent/60" />
+        </div>
+        <span className="text-[11px] text-muted-foreground font-mono ml-2">terminal</span>
+      </div>
+      {/* Terminal body */}
+      <div className="px-4 py-4 font-mono text-xs leading-relaxed h-56 overflow-hidden bg-foreground/[0.03]">
+        {terminalLines.slice(0, visibleLines).map((line, i) => (
+          <div
+            key={i}
+            className={`transition-opacity duration-300 ${
+              line.type === "command" ? "text-primary font-semibold" :
+              line.type === "pass" ? "text-accent" :
+              line.type === "success" ? "text-accent font-bold" :
+              line.type === "result" ? "text-foreground font-medium" :
+              "text-muted-foreground"
+            }`}
+          >
+            {line.text}
+          </div>
+        ))}
+        {visibleLines < terminalLines.length && (
+          <span className="inline-block w-2 h-4 bg-primary/70 animate-pulse" />
+        )}
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   return (
@@ -27,7 +93,12 @@ const HeroSection = () => {
         M
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
+      {/* Terminal - right side, desktop only */}
+      <div className="absolute top-1/2 -translate-y-1/2 right-[6%] hidden lg:block animate-float z-10">
+        <TerminalWidget />
+      </div>
+
+      <div className="relative z-10 max-w-3xl mx-auto text-center lg:ml-[5%] lg:mr-auto lg:text-left">
         <div>
           <div>
             {/* Mobile photo - inline, centered */}
