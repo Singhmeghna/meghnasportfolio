@@ -5,14 +5,14 @@ import { Award, Star } from "lucide-react";
 const AwardSection = () => {
   return (
     <section className="py-12 px-6" id="awards">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative bg-gradient-to-br from-primary/5 via-accent/5 to-transparent rounded-3xl border border-primary/15 overflow-hidden"
-        >
+      <motion.div
+        className="max-w-5xl mx-auto"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="relative bg-gradient-to-br from-primary/5 via-accent/5 to-transparent rounded-3xl border border-primary/15 overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-accent/10 to-transparent rounded-tr-full pointer-events-none" />
 
@@ -51,8 +51,8 @@ const AwardSection = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 };

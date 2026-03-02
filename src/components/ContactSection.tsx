@@ -8,13 +8,14 @@ const ContactSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background pointer-events-none" />
       </div>
 
-      <div className="max-w-3xl mx-auto text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+      <motion.div
+        className="max-w-3xl mx-auto text-center relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div>
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Get in Touch</p>
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
             Let's build
@@ -24,15 +25,9 @@ const ContactSection = () => {
           <p className="text-muted-foreground text-lg mb-14 max-w-md mx-auto leading-relaxed">
             Open to opportunities in QA Engineering, Test Automation, and Software Quality.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4"
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
           <a
             href="mailto:smeghna20@outlook.com"
             className="group flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5"
@@ -58,15 +53,9 @@ const ContactSection = () => {
             <Download size={16} />
             Resume
           </a>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ delay: 0.4 }}
-          className="flex items-center justify-center gap-6 text-muted-foreground text-sm"
-        >
+        <div className="flex items-center justify-center gap-6 text-muted-foreground text-sm">
           <a href="https://github.com/Singhmeghna" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary transition-colors">
             <Github size={14} />
             GitHub
@@ -75,8 +64,8 @@ const ContactSection = () => {
             <Phone size={13} />
             226–961–2734
           </span>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 };

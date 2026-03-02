@@ -21,14 +21,14 @@ const ProjectsSection = () => {
     <section className="py-12 px-6 relative" id="projects">
       <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-accent/[0.03] to-transparent pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
+      <motion.div
+        className="max-w-5xl mx-auto relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <FolderGit2 size={14} className="text-primary" />
             <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">Projects</span>
@@ -40,16 +40,12 @@ const ProjectsSection = () => {
             Hands-on projects demonstrating systems programming and machine learning skills.
           </p>
           <div className="section-divider mt-6" />
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, i) => (
-            <motion.div
+          {projects.map((project) => (
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1"
             >
               <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary/20" />
@@ -74,10 +70,10 @@ const ProjectsSection = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -48,14 +48,14 @@ const SkillsSection = () => {
         backgroundSize: '40px 40px',
       }} />
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
+      <motion.div
+        className="max-w-5xl mx-auto relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Zap size={14} className="text-accent" />
             <span className="text-accent text-xs tracking-[0.2em] uppercase font-semibold">Expertise</span>
@@ -64,16 +64,12 @@ const SkillsSection = () => {
             Technical <span className="text-gradient italic">arsenal</span>
           </h2>
           <div className="section-divider" />
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {skillCategories.map((cat, i) => (
-            <motion.div
+          {skillCategories.map((cat) => (
+            <div
               key={cat.title}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
               className="group bg-card rounded-2xl border border-border p-5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
             >
               <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cat.color} opacity-60`} />
@@ -94,10 +90,10 @@ const SkillsSection = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
