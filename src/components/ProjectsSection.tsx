@@ -33,7 +33,7 @@ const ProjectsSection = () => {
             <FolderGit2 size={14} className="text-primary" />
             <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">Projects</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4">
             Academic <span className="text-gradient italic">work</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl">
@@ -53,7 +53,7 @@ const ProjectsSection = () => {
               className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1"
             >
               <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary/20" />
-              <div className="p-8">
+              <div className="p-5 sm:p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <project.icon size={26} className="text-primary" />

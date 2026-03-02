@@ -3,7 +3,7 @@ import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shi
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 pt-20">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 pt-20">
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-background to-accent/[0.06]" />
       <motion.div
@@ -47,7 +47,7 @@ const HeroSection = () => {
         ))}
       </div>
       <motion.div
-        className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow"
+        className="absolute bottom-28 left-[8%] w-32 h-32 sm:w-48 sm:h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow hidden sm:block"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -59,7 +59,7 @@ const HeroSection = () => {
       <div className="absolute bottom-[30%] right-[25%] w-2 h-2 rounded-full bg-primary/30 animate-float" />
 
       {/* Faded monogram */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[22rem] md:text-[30rem] font-serif font-bold text-primary/[0.03] select-none pointer-events-none leading-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14rem] sm:text-[22rem] md:text-[30rem] font-serif font-bold text-primary/[0.03] select-none pointer-events-none leading-none">
         M
       </div>
 
@@ -88,10 +88,10 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Name */}
-            <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tight mb-2 leading-[0.9]">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold tracking-tight mb-2 leading-[0.9]">
               Meghna
             </h1>
-            <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tight mb-6 leading-[0.9]">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold tracking-tight mb-6 leading-[0.9]">
               <span className="text-gradient">Singh</span>
             </h1>
 
@@ -100,7 +100,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-muted-foreground text-lg md:text-xl max-w-lg mx-auto leading-relaxed mb-10 font-light"
+              className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-lg mx-auto leading-relaxed mb-8 sm:mb-10 font-light px-2 sm:px-0"
             >
               QA & Test Automation Engineer who turns{" "}
               <span className="text-foreground font-medium">chaos into confidence</span> —
@@ -113,19 +113,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex items-center justify-center gap-3 flex-wrap mb-6"
+            className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-6"
           >
             <a
               href="/Meghna_Singh_Resume.pdf"
               download
-              className="group flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
+              className="group flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
             >
               <Download size={15} />
               Download Resume
             </a>
             <a
               href="mailto:smeghna20@outlook.com"
-              className="group flex items-center gap-2 px-7 py-3.5 rounded-full glass-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 text-sm font-medium hover:-translate-y-0.5"
+              className="group flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full glass-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 text-sm font-medium hover:-translate-y-0.5"
             >
               <Mail size={15} className="text-primary" />
               Get in Touch
@@ -137,7 +137,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="flex items-center justify-center gap-4 flex-wrap mb-10"
+            className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap mb-8 sm:mb-10"
           >
             {[
               { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/meghna-singh20" },
@@ -169,7 +169,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="grid grid-cols-3 gap-4 max-w-md mx-auto"
+            className="grid grid-cols-3 gap-2 sm:gap-4 max-w-md mx-auto"
           >
             {[
               { value: "3+", label: "Years Experience", icon: Zap },
@@ -178,8 +178,8 @@ const HeroSection = () => {
             ].map((stat) => (
               <div key={stat.label} className="text-center glass-card rounded-2xl py-5 px-3 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                 <stat.icon size={16} className="text-primary mx-auto mb-2" />
-                <p className="text-2xl md:text-3xl font-serif font-bold text-gradient">{stat.value}</p>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-gradient">{stat.value}</p>
+                <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</p>
               </div>
             ))}
           </motion.div>

@@ -97,7 +97,7 @@ const ExperienceSection = () => {
             <Briefcase size={14} className="text-primary" />
             <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">Career</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4">
             Proven <span className="text-gradient italic">impact</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl">
