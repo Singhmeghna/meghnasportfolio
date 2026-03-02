@@ -6,43 +6,41 @@ const skillCategories = [
     title: "Automation",
     icon: "⚡",
     color: "from-[#6366F1] to-[#818CF8]",
-    skills: ["pytest", "REST API Testing", "Postman", "SOAP UI", "Python/C# Automation", "Protocol-Level"],
+    skills: ["pytest", "REST API Testing", "Postman", "SOAP UI", "Python/C# Backend Automation", "Protocol-Level Automation"],
   },
   {
     title: "Programming",
     icon: "💻",
     color: "from-[#0EA5E9] to-[#38BDF8]",
-    skills: ["Python", "C#", "MySQL", "JSON/XML", "Multithreading", "Telnet/FTP"],
+    skills: ["Python", "C#", "MySQL", "JSON", "XML", "Multithreading", "Data Validation Scripts", "Telnet", "FTP/SFTP", "Logging"],
   },
   {
-    title: "CI/CD & Tools",
+    title: "CI/CD & VCS",
     icon: "🔧",
     color: "from-[#10B981] to-[#34D399]",
-    skills: ["Git", "GitHub", "Jenkins", "Docker", "Jira", "Confluence", "ServiceNow"],
+    skills: ["Git", "GitHub", "Jenkins", "CI/CD", "Docker", "SVN", "Jira", "Confluence", "ServiceNow"],
   },
   {
     title: "Testing",
     icon: "🧪",
     color: "from-[#F59E0B] to-[#FBBF24]",
-    skills: ["Manual & Automated", "Regression", "Integration", "Validation", "Test Planning", "Defect Tracking"],
+    skills: ["Manual & Automated Testing", "Regression", "Integration", "Validation", "Stability & Reliability", "Test Planning", "Test Case Design", "Defect Tracking", "Error Handling"],
   },
   {
     title: "Analytics",
     icon: "📊",
     color: "from-[#EC4899] to-[#F472B6]",
-    skills: ["Root Cause Analysis", "Performance Tracking", "Metrics Dashboards", "System Monitoring"],
+    skills: ["Root Cause Analysis", "Performance Tracking", "Metrics Dashboards", "System Monitoring", "Quality Metrics", "Defect Prevention", "Continuous Improvement"],
   },
 ];
 
 const SkillsSection = () => {
   return (
     <section className="py-32 px-6 relative overflow-hidden" id="skills">
-      {/* Emerald-tinted background */}
       <div className="absolute top-10 -right-20 w-80 h-80 opacity-[0.06] rounded-full overflow-hidden pointer-events-none">
         <img src={skillsBg} alt="" className="w-full h-full object-cover" />
       </div>
 
-      {/* Dot grid pattern */}
       <div className="absolute inset-0 opacity-[0.025]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, hsl(215 25% 20%) 1px, transparent 0)`,
         backgroundSize: '40px 40px',
@@ -71,9 +69,8 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
+              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
             >
-              {/* Colored top edge */}
               <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cat.color} opacity-60`} />
               
               <div className="text-3xl mb-4">{cat.icon}</div>
@@ -84,7 +81,7 @@ const SkillsSection = () => {
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1.5 text-xs rounded-full bg-secondary text-secondary-foreground border border-transparent hover:border-accent/20 hover:bg-accent/5 hover:text-foreground transition-all duration-300 cursor-default"
+                    className="px-3 py-1.5 text-xs rounded-full bg-secondary text-secondary-foreground border border-transparent hover:border-primary/20 hover:bg-primary/5 hover:text-foreground transition-all duration-300 cursor-default"
                   >
                     {skill}
                   </span>
