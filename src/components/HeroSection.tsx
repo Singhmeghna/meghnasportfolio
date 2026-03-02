@@ -37,7 +37,8 @@ const HeroSection = () => {
           </div>
         ))}
       </div>
-      <div className="absolute bottom-28 left-[8%] w-32 h-32 sm:w-48 sm:h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 hidden sm:block">
+      {/* Photo - absolute on sm+, hidden on mobile (shown inline below) */}
+      <div className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 hidden sm:block">
         <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
       </div>
       <div className="absolute top-[35%] right-[10%] w-3 h-3 rounded-full bg-primary/40 glow-dot" />
@@ -52,6 +53,13 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <div>
           <div>
+            {/* Mobile photo - inline, centered */}
+            <div className="sm:hidden flex justify-center mb-6">
+              <div className="w-28 h-28 rounded-full border-2 border-primary/15 overflow-hidden shadow-xl shadow-primary/10">
+                <img src="/meghna-photo.jpeg" alt="Meghna Singh" className="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+
             {/* Status badge */}
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card mb-8 shadow-lg shadow-primary/5">
               <span className="relative flex h-2.5 w-2.5">
