@@ -20,7 +20,7 @@ const HeroSection = () => {
       />
 
       {/* Floating geometric decorations */}
-      <div className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center">
+      <motion.div className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center" animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }}>
         <div className="absolute inset-0 pointer-events-none select-none">
           <div className="relative w-full h-full">
             <span className="absolute top-[12%] left-1/2 -translate-x-1/2 text-2xl opacity-40">🐛</span>
@@ -34,7 +34,7 @@ const HeroSection = () => {
             <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl opacity-40">🤖</span>
           </div>
         </div>
-      </div>
+      </motion.div>
       <motion.div
         className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow"
         initial={{ opacity: 0, scale: 0.8 }}
