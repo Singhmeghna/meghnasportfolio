@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Download } from "lucide-react";
 
 const navLinks = [
   { label: "Experience", href: "#experience" },
@@ -38,6 +39,14 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <a
+            href="/Meghna_Singh_Resume.pdf"
+            download
+            className="ml-2 flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <Download size={13} />
+            Resume
+          </a>
         </div>
       </div>
     </nav>
