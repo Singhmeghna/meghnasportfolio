@@ -3,7 +3,7 @@ import { Mail, Linkedin, Github, Phone, ArrowUpRight, Download } from "lucide-re
 
 const ContactSection = () => {
   return (
-    <section className="py-20 px-6 relative overflow-hidden" id="contact">
+    <section className="py-12 px-6 relative overflow-hidden" id="contact">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background pointer-events-none" />
       </div>

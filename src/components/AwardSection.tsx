@@ -4,7 +4,7 @@ import { Award, Star } from "lucide-react";
 
 const AwardSection = () => {
   return (
-    <section className="py-20 px-6" id="awards">
+    <section className="py-12 px-6" id="awards">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 25 }}

@@ -82,7 +82,7 @@ const timeline: TimelineItem[] = [
 
 const ExperienceSection = () => {
   return (
-    <section className="py-16 px-6 relative" id="experience">
+    <section className="py-12 px-6 relative" id="experience">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/[0.03] to-transparent pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
