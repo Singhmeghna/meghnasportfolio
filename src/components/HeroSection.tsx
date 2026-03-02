@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, ArrowDown, Download, Sparkles, Zap, Shield, Phone, Bug, TestTube, CheckCircle, Settings, FileCheck } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -21,10 +21,21 @@ const HeroSection = () => {
 
       {/* Floating geometric decorations */}
       <motion.div
-        className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10"
+        className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center"
         animate={{ rotate: 360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      />
+      >
+        {/* Faded QA icons inside the circle */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
+          <div className="relative w-full h-full">
+            <Bug size={28} className="text-primary absolute top-[20%] left-[30%]" />
+            <TestTube size={24} className="text-primary absolute top-[25%] right-[25%]" />
+            <CheckCircle size={26} className="text-primary absolute bottom-[30%] left-[25%]" />
+            <Settings size={22} className="text-primary absolute bottom-[25%] right-[30%]" />
+            <FileCheck size={32} className="text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+          </div>
+        </div>
+      </motion.div>
       <motion.div
         className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -137,6 +148,10 @@ const HeroSection = () => {
               <MapPin size={13} />
               Toronto, ON
             </span>
+            <a href="tel:+12269612734" className="flex items-center gap-2 text-muted-foreground/60 hover:text-primary transition-colors text-sm">
+              <Phone size={13} />
+              226-961-2734
+            </a>
           </motion.div>
 
           {/* Impact stats */}
