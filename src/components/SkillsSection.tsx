@@ -42,7 +42,7 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden" id="skills">
+    <section className="py-20 px-6 relative overflow-hidden" id="skills">
       <div className="absolute inset-0 opacity-[0.02]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, hsl(221 83% 53%) 1px, transparent 0)`,
         backgroundSize: '40px 40px',
@@ -54,7 +54,7 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-14"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Zap size={14} className="text-accent" />
@@ -66,7 +66,7 @@ const SkillsSection = () => {
           <div className="section-divider" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {skillCategories.map((cat, i) => (
             <motion.div
               key={cat.title}
@@ -74,14 +74,14 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
+              className="group bg-card rounded-2xl border border-border p-5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
             >
               <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cat.color} opacity-60`} />
               
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <cat.icon size={22} className="text-primary" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <cat.icon size={20} className="text-primary" />
               </div>
-              <h3 className="text-lg font-serif font-bold mb-4 group-hover:text-gradient transition-colors">
+              <h3 className="text-lg font-serif font-bold mb-3 group-hover:text-gradient transition-colors">
                 {cat.title}
               </h3>
               <div className="flex flex-wrap gap-2">
