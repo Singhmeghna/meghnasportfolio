@@ -1,8 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { TrendingUp, Briefcase, Building2, MapPin, Calendar, ChevronDown, GraduationCap, Award } from "lucide-react";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { TrendingUp, Briefcase, MapPin, Calendar, GraduationCap, Award } from "lucide-react";
 
-interface Experience {
+interface TimelineItem {
   type: "work" | "education";
   company: string;
   role: string;
@@ -15,7 +14,7 @@ interface Experience {
   skills?: string[];
 }
 
-const timeline: Experience[] = [
+const timeline: TimelineItem[] = [
   {
     type: "work",
     company: "Mercor",
@@ -82,9 +81,6 @@ const timeline: Experience[] = [
 ];
 
 const ExperienceSection = () => {
-  // Lumentum (index 1) open by default
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(1);
-
   return (
     <section className="py-32 px-6 relative" id="experience">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/[0.03] to-transparent pointer-events-none" />
@@ -114,9 +110,8 @@ const ExperienceSection = () => {
         <div className="relative">
           <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-px bg-border" />
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {timeline.map((item, i) => {
-              const isExpanded = expandedIndex === i;
               const isEducation = item.type === "education";
 
               return (
@@ -134,9 +129,7 @@ const ExperienceSection = () => {
                       ? "bg-primary border-primary shadow-lg shadow-primary/30"
                       : isEducation
                         ? "bg-accent/80 border-accent/80"
-                        : isExpanded
-                          ? "bg-primary/80 border-primary/80"
-                          : "bg-card border-muted-foreground/30"
+                        : "bg-primary/60 border-primary/60"
                   }`}>
                     {item.current && (
                       <span className="absolute -inset-1 rounded-full bg-primary/20 animate-ping" />
@@ -144,7 +137,6 @@ const ExperienceSection = () => {
                   </div>
 
                   {isEducation ? (
-                    /* Education card — compact, no accordion */
                     <div className="group bg-card rounded-2xl border border-border p-6 md:p-8 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-500">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
@@ -163,13 +155,11 @@ const ExperienceSection = () => {
                               {item.location}
                             </span>
                           </div>
-
                           <h3 className="text-2xl font-serif font-bold group-hover:text-gradient transition-colors">
                             {item.company}
                           </h3>
                           <p className="text-foreground/70 text-sm">{item.role}</p>
                         </div>
-
                         {item.gpa && (
                           <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
                             <Award size={12} className="text-accent" />
@@ -179,16 +169,9 @@ const ExperienceSection = () => {
                       </div>
                     </div>
                   ) : (
-                    /* Work card — accordion */
-                    <div
-                      className={`group bg-card rounded-2xl border overflow-hidden transition-all duration-500 cursor-pointer ${
-                        isExpanded
-                          ? "border-primary/30 shadow-xl shadow-primary/5"
-                          : "border-border hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5"
-                      }`}
-                      onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                    >
-                      <div className="p-6 md:p-8">
+                    <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
+                      {/* Header */}
+                      <div className="p-6 md:p-8 pb-4 md:pb-5">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -207,71 +190,50 @@ const ExperienceSection = () => {
                                 {item.location}
                               </span>
                             </div>
-
                             <h3 className="text-2xl font-serif font-bold group-hover:text-gradient transition-colors">
                               {item.company}
                             </h3>
                             <p className="text-foreground/70 text-sm">{item.role}</p>
                           </div>
-
-                          <motion.div
-                            animate={{ rotate: isExpanded ? 180 : 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="flex-shrink-0 mt-2"
-                          >
-                            <ChevronDown size={20} className="text-muted-foreground" />
-                          </motion.div>
                         </div>
-
                         {item.tagline && (
                           <p className="text-accent/80 italic text-sm font-serif mt-2">{item.tagline}</p>
                         )}
                       </div>
 
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-6 md:px-8 pb-6 md:pb-8">
-                              <div className="h-px bg-border mb-6" />
+                      {/* Achievement cards grid */}
+                      <div className="px-6 md:px-8 pb-6 md:pb-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {item.highlights?.map((h, j) => (
+                            <motion.div
+                              key={j}
+                              initial={{ opacity: 0, y: 10 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: j * 0.06 }}
+                              className="rounded-xl bg-secondary/50 border border-border p-4 hover:border-primary/20 hover:bg-secondary/80 transition-all duration-300 flex flex-col"
+                            >
+                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-bold border border-accent/20 w-fit mb-3">
+                                <TrendingUp size={10} />
+                                {h.metric}
+                              </span>
+                              <p className="text-muted-foreground text-xs leading-relaxed flex-1">{h.text}</p>
+                            </motion.div>
+                          ))}
+                        </div>
 
-                              <div className="space-y-3 mb-6">
-                                {item.highlights?.map((h, j) => (
-                                  <motion.div
-                                    key={j}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: j * 0.08 }}
-                                    className="flex items-start gap-3"
-                                  >
-                                    <span className="flex-shrink-0 w-[120px] inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-accent/20">
-                                      <TrendingUp size={10} />
-                                      {h.metric}
-                                    </span>
-                                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">{h.text}</p>
-                                  </motion.div>
-                                ))}
-                              </div>
-
-                              <div>
-                                <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills & Tools</p>
-                                <div className="flex flex-wrap gap-1.5">
-                                  {item.skills?.map((skill) => (
-                                    <span key={skill} className="px-2.5 py-1 text-[10px] rounded-full bg-secondary text-secondary-foreground font-medium">
-                                      {skill}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                        {/* Skills */}
+                        <div className="mt-5 pt-4 border-t border-border">
+                          <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills & Tools</p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {item.skills?.map((skill) => (
+                              <span key={skill} className="px-2.5 py-1 text-[10px] rounded-full bg-secondary text-secondary-foreground font-medium">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </motion.div>
