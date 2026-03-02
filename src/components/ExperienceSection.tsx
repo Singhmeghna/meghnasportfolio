@@ -85,14 +85,14 @@ const ExperienceSection = () => {
     <section className="py-12 px-6 relative" id="experience">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/[0.03] to-transparent pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
+      <motion.div
+        className="max-w-4xl mx-auto relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Briefcase size={14} className="text-primary" />
             <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">Career</span>
@@ -104,25 +104,18 @@ const ExperienceSection = () => {
             Every role has been about one thing: making software you can trust.
           </p>
           <div className="section-divider mt-6" />
-        </motion.div>
+        </div>
 
         {/* Timeline */}
         <div className="relative">
           <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-px bg-border" />
 
           <div className="space-y-8">
-            {timeline.map((item, i) => {
+            {timeline.map((item) => {
               const isEducation = item.type === "education";
 
               return (
-                <motion.div
-                  key={item.company}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="relative pl-12 md:pl-16"
-                >
+                <div key={item.company} className="relative pl-12 md:pl-16">
                   {/* Timeline dot */}
                   <div className={`absolute left-[13px] md:left-[17px] top-7 w-[13px] h-[13px] rounded-full border-2 z-10 transition-colors duration-300 ${
                     item.current
@@ -170,7 +163,6 @@ const ExperienceSection = () => {
                     </div>
                   ) : (
                     <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
-                      {/* Header */}
                       <div className="p-6 md:p-8 pb-4 md:pb-5">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1 min-w-0">
@@ -201,16 +193,11 @@ const ExperienceSection = () => {
                         )}
                       </div>
 
-                      {/* Achievement cards grid */}
                       <div className="px-6 md:px-8 pb-6 md:pb-8">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {item.highlights?.map((h, j) => (
-                            <motion.div
+                            <div
                               key={j}
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true, margin: "-50px" }}
-                              transition={{ delay: j * 0.06 }}
                               className="rounded-xl bg-secondary/50 border border-border p-4 hover:border-primary/20 hover:bg-secondary/80 transition-all duration-300 flex flex-col"
                             >
                               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-bold border border-accent/20 w-fit mb-3">
@@ -218,11 +205,10 @@ const ExperienceSection = () => {
                                 {h.metric}
                               </span>
                               <p className="text-muted-foreground text-xs leading-relaxed flex-1">{h.text}</p>
-                            </motion.div>
+                            </div>
                           ))}
                         </div>
 
-                        {/* Skills */}
                         <div className="mt-5 pt-4 border-t border-border">
                           <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills & Tools</p>
                           <div className="flex flex-wrap gap-1.5">
@@ -236,12 +222,12 @@ const ExperienceSection = () => {
                       </div>
                     </div>
                   )}
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
