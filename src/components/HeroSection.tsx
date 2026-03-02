@@ -20,22 +20,21 @@ const HeroSection = () => {
       />
 
       {/* Floating geometric decorations */}
-      <motion.div
-        className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      >
-        {/* Faded QA icons inside the circle */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+      <div className="absolute top-24 right-[18%] w-64 h-64 rounded-full border border-primary/10 flex items-center justify-center">
+        <div className="absolute inset-0 pointer-events-none select-none">
           <div className="relative w-full h-full">
-            <span className="absolute top-[15%] left-[28%] text-3xl opacity-40">🐛</span>
-            <span className="absolute top-[20%] right-[20%] text-2xl opacity-45">🧪</span>
-            <span className="absolute bottom-[25%] left-[20%] text-3xl opacity-35">🛡️</span>
-            <span className="absolute bottom-[20%] right-[25%] text-2xl opacity-40">⚡</span>
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl opacity-45">✅</span>
+            <span className="absolute top-[12%] left-1/2 -translate-x-1/2 text-2xl opacity-40">🐛</span>
+            <span className="absolute top-[25%] right-[12%] text-2xl opacity-40">🧪</span>
+            <span className="absolute top-1/2 right-[8%] -translate-y-1/2 text-2xl opacity-40">⚙️</span>
+            <span className="absolute bottom-[25%] right-[12%] text-2xl opacity-40">📋</span>
+            <span className="absolute bottom-[12%] left-1/2 -translate-x-1/2 text-2xl opacity-40">✅</span>
+            <span className="absolute bottom-[25%] left-[12%] text-2xl opacity-40">🛡️</span>
+            <span className="absolute top-1/2 left-[8%] -translate-y-1/2 text-2xl opacity-40">⚡</span>
+            <span className="absolute top-[25%] left-[12%] text-2xl opacity-40">🔍</span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl opacity-40">🤖</span>
           </div>
         </div>
-      </motion.div>
+      </div>
       <motion.div
         className="absolute bottom-28 left-[8%] w-48 h-48 rounded-full border-2 border-primary/15 overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow"
         initial={{ opacity: 0, scale: 0.8 }}
