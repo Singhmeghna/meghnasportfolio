@@ -5,40 +5,91 @@ const skillCategories = [
   {
     title: "Automation",
     icon: Zap,
-    color: "from-primary to-primary/60",
     skills: ["pytest", "REST API Testing", "Postman", "SOAP UI", "Python/C# Backend Automation", "Protocol-Level Automation"],
   },
   {
     title: "Programming",
     icon: Code2,
-    color: "from-accent to-accent/60",
     skills: ["Python", "C#", "MySQL", "JSON", "XML", "Multithreading", "Data Validation Scripts", "Telnet", "FTP/SFTP", "Logging"],
   },
   {
     title: "CI/CD & VCS",
     icon: GitBranch,
-    color: "from-primary to-accent",
     skills: ["Git", "GitHub", "Jenkins", "CI/CD", "Docker", "SVN", "Jira", "Confluence", "ServiceNow"],
   },
   {
     title: "Testing",
     icon: FlaskConical,
-    color: "from-accent to-primary/60",
     skills: ["Manual & Automated Testing", "Regression", "Integration", "Validation", "Stability & Reliability", "Test Planning", "Test Case Design", "Defect Tracking", "Error Handling"],
   },
   {
     title: "Analytics",
     icon: BarChart3,
-    color: "from-primary/80 to-accent/80",
     skills: ["Root Cause Analysis", "Performance Tracking", "Metrics Dashboards", "System Monitoring", "Quality Metrics", "Defect Prevention", "Continuous Improvement"],
   },
   {
     title: "Methods",
     icon: Users,
-    color: "from-accent/80 to-primary",
     skills: ["Agile", "Scrum", "Waterfall", "Requirements Management", "Cross-Functional Collaboration"],
   },
 ];
+
+const MarqueeRow = ({
+  category,
+  reverse = false,
+  speed = 30,
+}: {
+  category: typeof skillCategories[number];
+  reverse?: boolean;
+  speed?: number;
+}) => {
+  const Icon = category.icon;
+  // Duplicate items for seamless loop
+  const items = [...category.skills, ...category.skills];
+
+  return (
+    <div className="group relative py-3 overflow-hidden">
+      {/* Category label */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-background via-background to-transparent pr-6 pl-1 flex items-center gap-2">
+        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+          <Icon size={16} className="text-primary" />
+        </div>
+        <span className="text-xs font-semibold text-foreground/70 uppercase tracking-wider whitespace-nowrap">
+          {category.title}
+        </span>
+      </div>
+
+      {/* Scrolling track */}
+      <div className="ml-[160px]">
+        <motion.div
+          className="flex gap-3 w-max"
+          animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: speed,
+              ease: "linear",
+            },
+          }}
+          whileHover={{ animationPlayState: "paused" }}
+        >
+          {items.map((skill, j) => (
+            <span
+              key={`${skill}-${j}`}
+              className="flex-shrink-0 px-4 py-2 text-sm rounded-full border border-border bg-card text-foreground/80 font-medium hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default whitespace-nowrap"
+            >
+              {skill}
+            </span>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Fade edges */}
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+    </div>
+  );
+};
 
 const SkillsSection = () => {
   return (
@@ -54,7 +105,7 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Zap size={14} className="text-accent" />
@@ -66,34 +117,21 @@ const SkillsSection = () => {
           <div className="section-divider" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Marquee rows */}
+        <div className="space-y-2">
           {skillCategories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cat.color} opacity-60`} />
-              
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <cat.icon size={22} className="text-primary" />
-              </div>
-              <h3 className="text-lg font-serif font-bold mb-4 group-hover:text-gradient transition-colors">
-                {cat.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1.5 text-xs rounded-full bg-secondary text-secondary-foreground border border-transparent hover:border-primary/20 hover:bg-primary/5 hover:text-foreground transition-all duration-300 cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <MarqueeRow
+                category={cat}
+                reverse={i % 2 === 1}
+                speed={25 + i * 5}
+              />
             </motion.div>
           ))}
         </div>
