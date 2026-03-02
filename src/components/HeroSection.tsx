@@ -93,7 +93,7 @@ const HeroSection = () => {
         M
       </div>
 
-      {/* Terminal - right side, desktop only */}
+      {/* Terminal - right side on desktop, inline on mobile */}
       <div className="absolute top-1/2 -translate-y-1/2 right-[6%] hidden lg:block animate-float z-10">
         <TerminalWidget />
       </div>
@@ -171,11 +171,11 @@ const HeroSection = () => {
                 <span>{label}</span>
               </a>
             ))}
-            <span className="flex items-center gap-2 text-muted-foreground/60 text-sm">
+            <span className="flex items-center gap-2 text-muted-foreground text-sm">
               <MapPin size={13} />
               Toronto, ON
             </span>
-            <a href="tel:+12269612734" className="flex items-center gap-2 text-muted-foreground/60 hover:text-primary transition-colors text-sm">
+            <a href="tel:+12269612734" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
               <Phone size={13} />
               226-961-2734
             </a>
@@ -194,6 +194,11 @@ const HeroSection = () => {
                 <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</p>
               </div>
             ))}
+          </div>
+
+          {/* Terminal - mobile only, inline */}
+          <div className="lg:hidden mt-8 flex justify-center">
+            <TerminalWidget />
           </div>
         </div>
       </div>
