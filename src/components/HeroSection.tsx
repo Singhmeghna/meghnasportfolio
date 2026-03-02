@@ -28,11 +28,11 @@ const HeroSection = () => {
         {/* Faded QA icons inside the circle */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="relative w-full h-full">
-            <Bug size={26} className="text-primary/30 absolute top-[18%] left-[32%]" />
-            <FileCheck size={24} className="text-accent/35 absolute top-[22%] right-[22%]" />
-            <Shield size={28} className="text-primary/25 absolute bottom-[28%] left-[22%]" />
-            <Zap size={22} className="text-accent/30 absolute bottom-[22%] right-[28%]" />
-            <TestTube size={30} className="text-primary/35 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <Bug size={26} color="hsl(221, 83%, 53%)" className="absolute top-[18%] left-[32%] opacity-40" />
+            <FileCheck size={24} color="hsl(173, 58%, 39%)" className="absolute top-[22%] right-[22%] opacity-45" />
+            <Shield size={28} color="hsl(221, 83%, 53%)" className="absolute bottom-[28%] left-[22%] opacity-35" />
+            <Zap size={22} color="hsl(173, 58%, 39%)" className="absolute bottom-[22%] right-[28%] opacity-40" />
+            <TestTube size={30} color="hsl(221, 83%, 53%)" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-45" />
           </div>
         </div>
       </motion.div>
