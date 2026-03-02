@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ExperienceSection from "@/components/ExperienceSection";
-import AwardSection from "@/components/AwardSection";
 import SkillsSection from "@/components/SkillsSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import EducationSection from "@/components/EducationSection";
-import ContactSection from "@/components/ContactSection";
+import AwardSection from "@/components/AwardSection";
 import RecommendationsSection from "@/components/RecommendationsSection";
+import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
@@ -13,10 +14,11 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ExperienceSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <EducationSection />
       <AwardSection />
       <RecommendationsSection />
-      <SkillsSection />
-      <EducationSection />
       <ContactSection />
       <footer className="py-8 text-center text-muted-foreground text-xs border-t border-border">
         © 2026 Meghna Singh. All rights reserved.

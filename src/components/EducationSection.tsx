@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap, Award, MapPin, Calendar } from "lucide-react";
 
 const education = [
   {
@@ -31,7 +31,10 @@ const EducationSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Background</p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <GraduationCap size={14} className="text-primary" />
+            <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">Background</span>
+          </div>
           <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
             Education & <span className="text-gradient italic">growth</span>
           </h2>
@@ -48,17 +51,16 @@ const EducationSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group relative bg-card rounded-2xl border border-border p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
             >
-              {/* Indigo gradient corner */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/5 to-transparent rounded-bl-full" />
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <GraduationCap size={22} className="text-primary" />
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10">
-                    <Award size={12} className="text-primary" />
-                    <span className="text-xs font-semibold text-primary">GPA: {edu.gpa}</span>
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
+                    <Award size={12} className="text-accent" />
+                    <span className="text-xs font-semibold text-accent">GPA: {edu.gpa}</span>
                   </div>
                 </div>
 
@@ -68,8 +70,8 @@ const EducationSection = () => {
                 <p className="text-muted-foreground text-sm mb-4">{edu.degree}</p>
 
                 <div className="flex items-center justify-between text-muted-foreground text-xs pt-4 border-t border-border">
-                  <span>{edu.period}</span>
-                  <span>{edu.location}</span>
+                  <span className="flex items-center gap-1"><Calendar size={11} />{edu.period}</span>
+                  <span className="flex items-center gap-1"><MapPin size={11} />{edu.location}</span>
                 </div>
               </div>
             </motion.div>

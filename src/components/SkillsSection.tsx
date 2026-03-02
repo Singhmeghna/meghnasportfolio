@@ -1,48 +1,50 @@
 import { motion } from "framer-motion";
-import skillsBg from "@/assets/skills-bg.jpg";
+import { Zap, Code2, GitBranch, FlaskConical, BarChart3, Users } from "lucide-react";
 
 const skillCategories = [
   {
     title: "Automation",
-    icon: "⚡",
-    color: "from-[#6366F1] to-[#818CF8]",
+    icon: Zap,
+    color: "from-primary to-primary/60",
     skills: ["pytest", "REST API Testing", "Postman", "SOAP UI", "Python/C# Backend Automation", "Protocol-Level Automation"],
   },
   {
     title: "Programming",
-    icon: "💻",
-    color: "from-[#0EA5E9] to-[#38BDF8]",
+    icon: Code2,
+    color: "from-accent to-accent/60",
     skills: ["Python", "C#", "MySQL", "JSON", "XML", "Multithreading", "Data Validation Scripts", "Telnet", "FTP/SFTP", "Logging"],
   },
   {
     title: "CI/CD & VCS",
-    icon: "🔧",
-    color: "from-[#10B981] to-[#34D399]",
+    icon: GitBranch,
+    color: "from-primary to-accent",
     skills: ["Git", "GitHub", "Jenkins", "CI/CD", "Docker", "SVN", "Jira", "Confluence", "ServiceNow"],
   },
   {
     title: "Testing",
-    icon: "🧪",
-    color: "from-[#F59E0B] to-[#FBBF24]",
+    icon: FlaskConical,
+    color: "from-accent to-primary/60",
     skills: ["Manual & Automated Testing", "Regression", "Integration", "Validation", "Stability & Reliability", "Test Planning", "Test Case Design", "Defect Tracking", "Error Handling"],
   },
   {
     title: "Analytics",
-    icon: "📊",
-    color: "from-[#EC4899] to-[#F472B6]",
+    icon: BarChart3,
+    color: "from-primary/80 to-accent/80",
     skills: ["Root Cause Analysis", "Performance Tracking", "Metrics Dashboards", "System Monitoring", "Quality Metrics", "Defect Prevention", "Continuous Improvement"],
+  },
+  {
+    title: "Methods",
+    icon: Users,
+    color: "from-accent/80 to-primary",
+    skills: ["Agile", "Scrum", "Waterfall", "Requirements Management", "Cross-Functional Collaboration"],
   },
 ];
 
 const SkillsSection = () => {
   return (
     <section className="py-32 px-6 relative overflow-hidden" id="skills">
-      <div className="absolute top-10 -right-20 w-80 h-80 opacity-[0.06] rounded-full overflow-hidden pointer-events-none">
-        <img src={skillsBg} alt="" className="w-full h-full object-cover" />
-      </div>
-
-      <div className="absolute inset-0 opacity-[0.025]" style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, hsl(215 25% 20%) 1px, transparent 0)`,
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, hsl(221 83% 53%) 1px, transparent 0)`,
         backgroundSize: '40px 40px',
       }} />
 
@@ -54,7 +56,10 @@ const SkillsSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Expertise</p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+            <Zap size={14} className="text-accent" />
+            <span className="text-accent text-xs tracking-[0.2em] uppercase font-semibold">Expertise</span>
+          </div>
           <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
             Technical <span className="text-gradient italic">arsenal</span>
           </h2>
@@ -73,7 +78,9 @@ const SkillsSection = () => {
             >
               <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cat.color} opacity-60`} />
               
-              <div className="text-3xl mb-4">{cat.icon}</div>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <cat.icon size={22} className="text-primary" />
+              </div>
               <h3 className="text-lg font-serif font-bold mb-4 group-hover:text-gradient transition-colors">
                 {cat.title}
               </h3>

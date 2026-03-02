@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TrendingUp, ArrowUpRight } from "lucide-react";
+import { TrendingUp, ArrowUpRight, Briefcase, Building2, MapPin, Calendar } from "lucide-react";
 
 interface Experience {
   company: string;
@@ -9,7 +9,6 @@ interface Experience {
   tagline: string;
   highlights: { text: string; metric?: string }[];
   skills: string[];
-  tags: string[];
 }
 
 const experiences: Experience[] = [
@@ -20,12 +19,11 @@ const experiences: Experience[] = [
     location: "Toronto, ON",
     tagline: "Raising the bar on AI quality evaluation at scale",
     highlights: [
-      { text: "Elevated quality score from 3.5 to 4.2 and reduced rewrites by 25% by designing constraint-driven RL Studio prompts to evaluate LLM outputs against 100+ page technical manuals.", metric: "↑ 20% quality" },
-      { text: "Drove a 30% increase in approval rate by producing structured answer keys and validating model alignment and correctness.", metric: "30% ↑ approvals" },
+      { text: "Elevated model quality score from 3.5 to 4.2 and reduced rewrites by 25% by architecting constraint-driven RL Studio prompts to evaluate LLM outputs against 100+ page enterprise technical manuals.", metric: "↑ 20% quality" },
+      { text: "Drove a 30% increase in approval rates by developing structured answer keys and executing rigorous model alignment audits.", metric: "30% ↑ approvals" },
       { text: "Standardized evaluation across 50+ procedural documents by strengthening Golden Responses and enforcing rubric compliance.", metric: "50+ docs" },
     ],
-    skills: ["Quality Assurance", "Requirements Analysis", "Documentation Review", "Test Case Design", "LLM Evaluation", "RL Studio"],
-    tags: ["LLM Evaluation", "RL Studio", "Quality Assurance", "Documentation Review"],
+    skills: ["LLM Evaluation", "Prompt Engineering", "Quality Assurance", "Requirements Analysis", "Rubric Design", "Documentation Governance", "Test Case Design", "AI Model Validation", "RL Studio"],
   },
   {
     company: "Lumentum",
@@ -40,8 +38,7 @@ const experiences: Experience[] = [
       { text: "Enhanced device reliability by testing performance across 5–65°C and ±2.4V, logging drift data, and collaborating with R&D to optimize accuracy and stability.", metric: "Temp range QA" },
       { text: "Verified product safety through stability validation across 5–50°C, identifying early risks and strengthening long-term reliability.", metric: "Safety validation" },
     ],
-    skills: ["Python", "C#", "pytest", "REST API Testing", "Telnet/FTP", "Logging", "Protobuf", "SQL", "Firmware QA", "Manual Testing", "Test Planning", "Automation Framework Integration (C#)", "CI/CD", "Jira", "Confluence"],
-    tags: ["Python", "C#", "pytest", "REST API", "Protobuf", "CI/CD", "Firmware QA"],
+    skills: ["Python", "C#", "pytest", "REST API Testing", "Telnet/FTP", "Logging", "Protobuf", "SQL", "Firmware QA", "Production Testing", "Manual Testing", "Test Planning", "Automation Framework Integration (C#)", "CI/CD", "Jira", "Confluence"],
   },
   {
     company: "Wipro Limited",
@@ -57,7 +54,6 @@ const experiences: Experience[] = [
       { text: "Accelerated QA onboarding by 30% by documenting QA workflows and architecture in Confluence and Visio, improving clarity.", metric: "30% faster" },
     ],
     skills: ["SAP PI/PO", "REST API", "SOAP UI", "Postman", "Integration Testing", "Regression Testing", "Manual Testing", "Performance Testing", "Test Planning", "Defect Triage", "Root Cause Analysis", "Jira", "Confluence", "Visio", "Agile", "QA Documentation"],
-    tags: ["SAP PI/PO", "Postman", "SOAP UI", "Integration Testing", "Jira", "Agile"],
   },
 ];
 
@@ -74,7 +70,10 @@ const ExperienceSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-medium">Career</p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Briefcase size={14} className="text-primary" />
+            <span className="text-primary text-xs tracking-[0.2em] uppercase font-semibold">Career</span>
+          </div>
           <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4">
             Proven <span className="text-gradient italic">impact</span>
           </h2>
@@ -100,26 +99,33 @@ const ExperienceSection = () => {
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
                   <div>
                     <div className="flex items-center gap-3 mb-1">
+                      <Building2 size={20} className="text-primary" />
                       <h3 className="text-3xl font-serif font-bold group-hover:text-gradient transition-all duration-300">
                         {exp.company}
                       </h3>
                       <ArrowUpRight size={18} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </div>
-                    <p className="text-foreground/80 text-sm font-medium">{exp.role}</p>
+                    <p className="text-foreground/80 text-sm font-medium ml-8">{exp.role}</p>
                   </div>
                   <div className="text-muted-foreground text-xs mt-3 md:mt-0 md:text-right flex flex-col gap-1.5">
-                    <span className="inline-flex px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground font-medium">{exp.period}</span>
-                    <span>{exp.location}</span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-semibold">
+                      <Calendar size={11} />
+                      {exp.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1 justify-end">
+                      <MapPin size={11} />
+                      {exp.location}
+                    </span>
                   </div>
                 </div>
 
-                <p className="text-primary/80 italic text-sm mb-6 font-serif">{exp.tagline}</p>
+                <p className="text-accent italic text-sm mb-6 font-serif ml-8">{exp.tagline}</p>
 
                 <div className="space-y-4 mb-6">
                   {exp.highlights.map((h, j) => (
                     <div key={j} className="flex items-start gap-4">
                       {h.metric && (
-                        <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-primary/[0.08] text-primary text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-primary/10">
+                        <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[11px] font-semibold whitespace-nowrap mt-0.5 border border-accent/20">
                           <TrendingUp size={10} />
                           {h.metric}
                         </span>
@@ -130,23 +136,15 @@ const ExperienceSection = () => {
                 </div>
 
                 {/* Per-role skills */}
-                <div className="mb-4">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills Used</p>
+                <div className="pt-4 border-t border-border">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2">Skills & Tools</p>
                   <div className="flex flex-wrap gap-1.5">
                     {exp.skills.map((skill) => (
-                      <span key={skill} className="px-2 py-0.5 text-[10px] rounded-full bg-primary/[0.06] text-primary/80 font-medium border border-primary/10">
+                      <span key={skill} className="px-2.5 py-1 text-[10px] rounded-full bg-secondary text-secondary-foreground font-medium hover:bg-primary/10 hover:text-primary transition-colors cursor-default">
                         {skill}
                       </span>
                     ))}
                   </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
-                  {exp.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 text-[10px] uppercase tracking-wider rounded-full bg-secondary text-muted-foreground font-medium">
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </div>
             </motion.div>
